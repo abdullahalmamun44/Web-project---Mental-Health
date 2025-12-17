@@ -1,0 +1,137 @@
+<html>
+<head>
+    <title>Create Account</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(
+                135deg,
+                #ffffff,
+                #ffffff,
+                #ffffff
+            );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+ 
+        .container {
+            background: rgb(218, 238, 244);
+            padding: 25px;
+            width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+        }
+ 
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+ 
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #5abb51;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+ 
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background: #ffffff;
+            color: rgb(252, 2, 2);
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+ 
+        .btn:hover {
+            background: #f8f8f8;
+        }
+ 
+        .login-link {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+ 
+        .login-link a {
+            text-decoration: none;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+ 
+<body>
+ 
+    <div class="container">
+        <h2>Create Account</h2>
+ 
+        <form id="createAccountForm" onsubmit="return validateForm()">
+            <input type="text" id="fullName" placeholder="Full Name" required>
+            <input type="tel" id="phoneNumber" placeholder="Phone Number" pattern="^[0-9]{10}$" required>
+ 
+            <input type="email" id="email" placeholder="Email Address" required>
+ 
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+ 
+            <input type="number" id="age" placeholder="Age" min="18" required>
+ 
+            <select id="gender" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+ 
+            <input type="tel" id="emergencyContact" placeholder="Emergency Contact" pattern="^[0-9]{10}$" required>
+ 
+            <button type="submit" class="btn">Create Account</button>
+        </form>
+ 
+        <div class="login-link">
+            Already have an account? <a href="user_login.html">Login</a>
+        </div>
+    </div>
+ 
+    <script>
+        function validateForm() {
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+            const phoneNumber = document.getElementById("phoneNumber").value;
+            const emergencyContact = document.getElementById("emergencyContact").value;
+            const age = document.getElementById("age").value;
+ 
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+ 
+            if (age < 18) {
+                alert("You must be at least 18 years old to create an account.");
+                return false;
+            }
+ 
+            if (!/^\d{11}$/.test(phoneNumber)) {
+                alert("Please enter a valid 11-digit phone number.");
+                return false;
+            }
+ 
+            if (!/^\d{11}$/.test(emergencyContact)) {
+                alert("Please enter a valid 11-digit emergency contact number.");
+                return false;
+            }
+ 
+            return true;
+        }
+    </script>
+ 
+</body>
+</html>

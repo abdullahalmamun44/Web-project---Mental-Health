@@ -1,0 +1,148 @@
+
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nirvoy - Mental Health App</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f8fb;
+      color: #333;
+    }
+
+    header {
+      background-color: #4a90e2;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .language-select {
+      margin-top: 0.5rem;
+    }
+
+    button, select {
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+    }
+
+    .intro {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .menu {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #e0e0e0;
+      display: flex;
+      justify-content: space-around;
+      padding: 0.5rem 0;
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+    }
+
+    .page {
+      display: none;
+      padding: 1rem;
+    }
+
+    .page.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Nirvoy</h1>
+    <div class="language-select">
+      <label for="language">Select Language:</label>
+      <select id="language">
+        <option value="en">English</option>
+        <option value="bn">Bangla</option>
+      </select>
+    </div>
+    <button id="voiceToggle">Voice: Off</button>
+  </header>
+
+  <main>
+    <section id="home" class="page active">
+      <div class="intro">
+        <h2>CARE FOR YOUR MENTAL HEALTH</h2>
+      </div>
+      <nav class="menu">
+        <button>Display & Front</button>
+        <button>
+        <a href="About.html">About</a>
+      </button>
+        <button>
+        <a href="update.html">Software update</a>
+      </button>
+      </nav>
+    </section>
+
+    <section id="setting" class="page">
+      <h2> Settings</h2>
+      <p>Here you can customize your app preferences:</p>
+      <ul>
+        <li>Change Language</li>
+        <li>Toggle Voice Assistance</li>
+        <li>Update Software</li>
+        <li>About Nirvoy</li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+  
+    document.getElementById('voiceToggle').addEventListener('click', function () {
+      const current = this.textContent.includes('Off');
+      this.textContent = `Voice: ${current ? 'On' : 'Off'}`;
+    });
+
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.section;
+
+        document.querySelectorAll('.page').forEach(page => {
+          page.classList.remove('active');
+        });
+
+        const section = document.getElementById(target);
+        if (section) {
+          section.classList.add('active');
+        } else {
+          alert(`Navigating to ${target} section`);
+        }
+      });
+    });
+
+    document.getElementById('language').addEventListener('change', function () {
+      alert(`Language changed to ${this.options[this.selectedIndex].text}`);
+    });
+  </script>
+
+  <div class= "bottom-nav">
+    <a href= "dashboard.html" class="active">🏠 Dashboard</a>
+    <a href= "mood.html">😊 Mood</a>
+    <a href= "consulting.html">💬 Consulting</a>
+    <a href= "setting.html">⚙️ Setting</a>
+  </div>
+</body>
+</html>
