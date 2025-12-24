@@ -12,7 +12,7 @@
         }else{
             $user = ['username'=> $username, 'password'=> $password, 'email'=> $email];
             $_SESSION['user'] = $user;
-            header('location: userlogin.php');
+            header('location: ../views/userlogin.php');
         }
     }else{
         header('location: register.php');

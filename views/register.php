@@ -73,7 +73,7 @@
     <div class="container">
         <h2>Create Account</h2>
 
-        <form action="registerCheck.php" method="POST" id="createAccountForm" onsubmit="return validateForm()" enctype="">
+        <form action="../controllers/registerCheck.php" method="POST" id="createAccountForm" onsubmit="return validateForm()" enctype="">
             <input type="text" id="fullName" placeholder="Full Name" required>
             <input type="tel" id="phoneNumber" placeholder="Phone Number" pattern="^[0-9]{11}$" required>
 

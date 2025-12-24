@@ -1,6 +1,6 @@
 <?php
     session_start();
     if(isset($_COOKIE['status']) !== true){
-        header('location: userlogin.php');
+        header('location: ../views/userlogin.php');
     }
 ?>

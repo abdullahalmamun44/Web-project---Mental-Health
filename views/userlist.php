@@ -1,8 +1,6 @@
 <?php
-    //include('../controllers/sessionCheck.php');
-    //include_once('../controllers/sessionCheck.php');
-    //require('../controllers/sessionCheck.php');
-    require_once('sessionCheck.php');
+
+    require_once('../controllers/sessionCheck.php');
     $users=[
         ['username'=> 'alamn', 'password'=> '123', 'email'=>'alamin@aiub.edu'],
         ['username'=> 'abc', 'password'=> '1234', 'email'=>'abc@aiub.edu'],
@@ -22,7 +20,7 @@
 <body>
         <h2>User List</h2>
         <a href="home.php"> Back </a> |
-        <a href="logout.php"> logout</a>
+        <a href="../controllers/logout.php"> logout</a>
         <br><br>
         <table border=1>
             <tr>

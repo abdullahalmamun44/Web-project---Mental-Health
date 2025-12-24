@@ -18,6 +18,6 @@ if(isset($_POST['submit'])==true) {
 
     
 }else{
-    header('location: userlogin.php');
+    header('location: ../views/userlogin.php');
 }
 ?>

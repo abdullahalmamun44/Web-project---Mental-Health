@@ -1,5 +1,5 @@
 <?php
-    include('sessionCheck.php');
+    include('../controllers/sessionCheck.php');
 ?>
 
 
