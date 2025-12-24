@@ -164,7 +164,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
         <a href="#" class="forgot-link">Forgot password?</a>
       </form>
     </div>
-    <br><br>
+
   <?php endif; ?>
 
 </body>
