@@ -129,6 +129,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'home';
       </div>
       <button type="submit" class="login-btn">Log in</button>
       <a href="#" class="forgot-link">Forgot password?</a>
+      <br>
     </form>
   </div>
 <?php endif; ?>
