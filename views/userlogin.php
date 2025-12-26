@@ -1,8 +1,12 @@
+
 <html>
 <head>
-    <title> User Login</title>
-    <style>
-        body {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NIRVOY User Login</title>
+  
+  <style>
+    body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: #f0f4f8;
@@ -93,48 +97,48 @@
       font-size: 1.2rem;
       cursor: pointer;
     }
-    </style>
+  </style>
 </head>
 <body>
-    <button class="back-btn" onclick="history.back()">Back</button>
-    <div class="container">
-        <h2>User Login</h2>
-        <form id="loginForm" onsubmit="return validateForm()">
-            <input type="text" id="username" placeholder="Username">
-            <div id="usernameError" class="error"></div>
-            <input type="password" id="password" placeholder="Password">
-            <div id="passwordError" class="error"></div>
-            <button class="btn">Login</button>
-        </form>
-        <div class="text-links">
-            <a href="">Forgot Password?</a>
-            <a href="register.php">Create Account</a>
-            
-        </div>
+  <div class="login-container">
+    <div class="logo">
+      <span class="icon"></span>
+      <h1>NIRVOY</h1>
     </div>
+    <h2>User</h2>
+    <form id="loginForm">
+      <div class="input-group">
+        <label for="username"></label>
+        <input type="text" id="username" placeholder="Name" required />
+      </div>
+      <div class="input-group">
+        <label for="password"></label>
+        <input type="password" id="password" placeholder="Password" required />
+      </div>
+      <button type="submit" class="login-btn">Log in</button>
+      <a href="#" class="forgot-link">Forgot password?</a>
+    </form>
+  </div>
 
-<script>
-function validateForm() {
-    let username = document.getElementById("username").value.trim();
-    let password = document.getElementById("password").value.trim();
-    let usernameError = document.getElementById("usernameError");
-    let passwordError = document.getElementById("passwordError");
-    usernameError.innerHTML = "";
-    passwordError.innerHTML = "";
-    let valid = true;
-    if (username === "") {
-        usernameError.innerHTML = "Username is required!";
-        valid = false;
-    }
-    if (password === "") {
-        passwordError.innerHTML = "Password is required!";
-        valid = false;
-    } else if (password.length <4 ) {
-        passwordError.innerHTML = "Password must be at least 6 characters!";
-        valid = false;
-    }
-    return valid;
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (username === '' || password === '') {
+        alert('Please fill in both fields.');
+        return;
+      }
+
+      if (username === 'admin' && password === '1234') {
+  alert('Login successful!');
+  window.location.href = 'dashboard.html'; 
+} else {
+  alert('Invalid credentials. Try again.');
 }
-</script>
+    }
+  );
+  </script>
 </body>
 </html>
