@@ -3,86 +3,96 @@
     <title> User Login</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #d4f7f0, #b7e9d4, #a0d9c3);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      justify-content: center;   
+      align-items: center;      
+      height: 100vh;             
+    }
 
-        .back-btn {
-            position: fixed;
-            top: 15px;
-            left: 15px;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-        }
+    .login-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 320px;
+      text-align: center;
+      position: relative;
+    }
 
-        .container {
-            background: white;
-            padding: 35px;
-            width: 420px; 
-            border-radius: 15px;
-            box-shadow: 0 0 12px rgba(0,0,0,0.2);
-        }
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 25px;
-            font-size: 26px;
-        }
+    h2 {
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
 
-        input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 16px;
-        }
+    .input-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 0.5rem;
+    }
 
-        .btn {
-            width: 100%;
-            padding: 12px;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 6px;
-            font-size: 18px;
-        }
+    .input-group label {
+      margin-right: 0.5rem;
+      color: #666;
+    }
 
-        .btn:hover {
-            background: #45a049;
-        }
+    .input-group input {
+      border: none;
+      outline: none;
+      flex: 1;
+      font-size: 1rem;
+    }
 
-        .text-links {
-            text-align: center;
-            margin-top: 15px;
-        }
+    .login-btn {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 1rem;
+      width: 100%;
+    }
 
-        .text-links a {
-            text-decoration: none;
-            color: #4CAF50;
-            display: block;
-            margin: 6px 0;
-            font-size: 15px;
-        }
+    .login-btn:hover {
+      background: #218838;
+    }
 
-        .error {
-            color: red;
-            font-size: 14px;
-            margin-top: -5px;
-            margin-bottom: 10px;
-        }
+    .forgot-link {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .forgot-link:hover {
+      text-decoration: underline;
+    }
+
+    .back-icon {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
     </style>
 </head>
 <body>

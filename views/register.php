@@ -8,59 +8,59 @@
             font-family: Arial, sans-serif;
             background: linear-gradient(
                 135deg,
-                #d4f7f0,
-                #b7e9d4,
-                #a0d9c3
+                #ffffff,
+                #ffffff,
+                #ffffff
             );
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
-
+ 
         .container {
-            background: white;
+            background: rgb(218, 238, 244);
             padding: 25px;
             width: 350px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.15);
         }
-
+ 
         h2 {
             text-align: center;
             margin-bottom: 20px;
         }
-
+ 
         input, select {
             width: 100%;
             padding: 10px;
             margin: 8px 0;
-            border: 1px solid #ccc;
+            border: 1px solid #5abb51;
             border-radius: 5px;
             font-size: 14px;
         }
-
+ 
         .btn {
             width: 100%;
             padding: 10px;
-            background: #4CAF50;
-            color: white;
+            background: #ffffff;
+            color: rgb(252, 2, 2);
             border: none;
             cursor: pointer;
             border-radius: 5px;
             font-size: 16px;
         }
-
+ 
         .btn:hover {
-            background: #45a049;
+            background: #f8f8f8;
         }
-
+ 
         .login-link {
             text-align: center;
             margin-top: 10px;
             font-size: 14px;
         }
-
+ 
         .login-link a {
             text-decoration: none;
             color: #4CAF50;
@@ -68,8 +68,7 @@
     </style>
 </head>
 
-<body>
-
+    <body>
     <div class="container">
         <h2>Create Account</h2>
 
