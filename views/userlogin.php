@@ -97,15 +97,29 @@
       font-size: 1.2rem;
       cursor: pointer;
     }
+    .back-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
   </style>
 </head>
 <body>
+  
+    <button class="back-btn" onclick="history.back()">Back</button>
   <div class="login-container">
     <div class="logo">
       <span class="icon"></span>
       <h1>NIRVOY</h1>
     </div>
-    <h2>User</h2>
+    <h2>User Login</h2>
     <form id="loginForm">
       <div class="input-group">
         <label for="username"></label>
@@ -117,6 +131,7 @@
       </div>
       <button type="submit" class="login-btn">Log in</button>
       <a href="#" class="forgot-link">Forgot password?</a>
+      <a href="register.php">Create Account</a>
     </form>
   </div>
 

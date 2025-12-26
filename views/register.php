@@ -75,7 +75,7 @@
 
         <form action="../controllers/registerCheck.php" method="POST" id="createAccountForm" onsubmit="return validateForm()" enctype="">
             <input type="text" id="fullName" placeholder="Full Name" required>
-            <input type="text" id="username" placeholder="User Name" required>
+            <input type="text" id="username" placeholder="username" required>
 
             <input type="tel" id="phoneNumber" placeholder="Phone Number" pattern="^[0-9]{11}$" required>
 
