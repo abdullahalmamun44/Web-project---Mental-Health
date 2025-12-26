@@ -15,7 +15,7 @@
             header('location: ../views/userlogin.php');
         }
     }else{
-        header('location: register.php');
+        header('location: ../views/register.php');
     }
 
 ?>
