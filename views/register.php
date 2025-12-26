@@ -8,59 +8,59 @@
             font-family: Arial, sans-serif;
             background: linear-gradient(
                 135deg,
-                #ffffff,
-                #ffffff,
-                #ffffff
+                #d4f7f0,
+                #b7e9d4,
+                #a0d9c3
             );
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
- 
+
         .container {
-            background: rgb(218, 238, 244);
+            background: white;
             padding: 25px;
             width: 350px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.15);
         }
- 
+
         h2 {
             text-align: center;
             margin-bottom: 20px;
         }
- 
+
         input, select {
             width: 100%;
             padding: 10px;
             margin: 8px 0;
-            border: 1px solid #5abb51;
+            border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 14px;
         }
- 
+
         .btn {
             width: 100%;
             padding: 10px;
-            background: #ffffff;
-            color: rgb(252, 2, 2);
+            background: #4CAF50;
+            color: white;
             border: none;
             cursor: pointer;
             border-radius: 5px;
             font-size: 16px;
         }
- 
+
         .btn:hover {
-            background: #f8f8f8;
+            background: #45a049;
         }
- 
+
         .login-link {
             text-align: center;
             margin-top: 10px;
             font-size: 14px;
         }
- 
+
         .login-link a {
             text-decoration: none;
             color: #4CAF50;
@@ -68,12 +68,15 @@
     </style>
 </head>
 
-    <body>
+<body>
+
     <div class="container">
         <h2>Create Account</h2>
 
         <form action="../controllers/registerCheck.php" method="POST" id="createAccountForm" onsubmit="return validateForm()" enctype="">
             <input type="text" id="fullName" placeholder="Full Name" required>
+            <input type="text" id="username" placeholder="User Name" required>
+
             <input type="tel" id="phoneNumber" placeholder="Phone Number" pattern="^[0-9]{11}$" required>
 
             <input type="email" id="email" placeholder="Email Address" required>
