@@ -82,7 +82,7 @@
             <input type="email" id="email" placeholder="Email Address" required>
 
             <input type="password" id="password" placeholder="Password" required>
-            <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+            
 
             <input type="number" id="age" placeholder="Age" min="18" required>
 
