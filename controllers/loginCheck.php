@@ -1,4 +1,5 @@
 <?php
+    require_once('../models/usermodel.php');
 if(isset($_POST['submit'])==true) {
     session_start();
     $username=$_REQUEST['username'];
@@ -7,10 +8,12 @@ if(isset($_POST['submit'])==true) {
         echo"Null username/password... Please type again !";
 
     }else{
-        if($username==$_SESSION['user']['username']&&$password==$_SESSION['user']['password']){
+        $user =['username'=>$username,'password'=>$password];
+        $status=login($user);
+        if($status){
             setcookie('status','true',time()+3000,'/');
             $_SESSION['username']= $username;
-            header('location: home.php');
+            header('location: ../views/home.php');
         }else{
         echo"Invalid username /Password";
         }
