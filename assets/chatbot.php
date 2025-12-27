@@ -1,4 +1,6 @@
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -114,20 +116,20 @@
 
   <div class="section">
     <h2>Chatbot Interaction</h2>
-
-<div class="section">
-    <a href="https://www.chatbot.com/">
-      <img src="../assets/chatbot 1.webp" alt="" />
-      <span></span>
-    </a>
-</div>
+    <div class="section">
+      <a href="https://www.chatbot.com/">
+        <img src="../assets/chatbot 1.webp" alt="Chatbot Interaction" />
+        <span></span>
+      </a>
+    </div>
   </div>
 
   <div class="bottom-nav">
-    <a href="dashboard.html"> Dashboard</a>
-    <a href="mood.html"> Mood</a>
-    <a href="consulting.html"> Consulting</a>
-    <a href="setting.html">Setting</a>
+    <a href="dashboard.php"> Dashboard</a>
+    <a href="mood.php"> Mood</a>
+    <a href="consulting.php"> Consulting</a>
+    <a href="setting.php"> Setting</a>
+    <a href="?action=logout"> Logout</a>
   </div>
 </body>
 </html>
