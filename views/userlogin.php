@@ -119,40 +119,19 @@
       <h1>NIRVOY</h1>
     </div>
     <h2>User Login</h2>
-    <form id="loginForm">
+    <form action="../controllers/loginCheck.php" method="post" enctype="" id="loginForm">
       <div class="input-group">
         <label for="username"></label>
-        <input type="text" id="username" placeholder="Name" required />
+        <input type="text" name="username" id="username"  placeholder="username" required />
       </div>
       <div class="input-group">
         <label for="password"></label>
-        <input type="password" id="password" placeholder="Password" required />
+        <input type="password"  name="password" id="password"  placeholder="Password" required />
       </div>
-      <button type="submit" class="login-btn">Log in</button>
+      <button type="submit" name="submit" class="login-btn">Log in</button>
       <a href="#" class="forgot-link">Forgot password?</a>
       <a href="register.php">Create Account</a>
     </form>
   </div>
-
-  <script>
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const username = document.getElementById('username').value.trim();
-      const password = document.getElementById('password').value.trim();
-
-      if (username === '' || password === '') {
-        alert('Please fill in both fields.');
-        return;
-      }
-
-      if (username === 'admin' && password === '1234') {
-  alert('Login successful!');
-  window.location.href = 'dashboard.html'; 
-} else {
-  alert('Invalid credentials. Try again.');
-}
-    }
-  );
-  </script>
 </body>
 </html>

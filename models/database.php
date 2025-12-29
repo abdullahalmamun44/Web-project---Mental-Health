@@ -1,7 +1,7 @@
 <?php
 
     $host = "127.0.0.1";
-    $dbname = "project";
+    $dbname = "webtech";
     $dbuser = "root";
     $dbpass = "";
 
@@ -9,8 +9,12 @@
         global $host;
         global $dbname;
         global $dbpass;
+        global $dbuser;
 
-        $con = mysqli_connect($host, $GLOBALS['dbuser'], $dbpass, $dbname);
+        $con = mysqli_connect($host, $dbuser, $dbpass, $dbname);
+        if (!$con) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
         return $con;
     }
 

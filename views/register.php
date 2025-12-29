@@ -74,28 +74,28 @@
         <h2>Create Account</h2>
 
         <form action="../controllers/registerCheck.php" method="POST" id="createAccountForm" onsubmit="return validateForm()" enctype="">
-            <input type="text" id="fullName" placeholder="Full Name" required>
-            <input type="text" id="username" placeholder="username" required>
+            <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+            <input type="text" id="username" name="username" placeholder="username" required>
 
-            <input type="tel" id="phoneNumber" placeholder="Phone Number" pattern="^[0-9]{11}$" required>
+            <input type="tel" id="phonenumber" name="phonenumber" placeholder="Phone Number" pattern="^[0-9]{11}$" required>
 
-            <input type="email" id="email" placeholder="Email Address" required>
+            <input type="email" id="email" name="email" placeholder="Email Address" required>
 
-            <input type="password" id="password" placeholder="Password" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
             
 
-            <input type="number" id="age" placeholder="Age" min="18" required>
+            <input type="number" id="age" name="age" placeholder="Age" min="18" required>
 
-            <select id="gender" required>
+            <select id="gender" name="gender" required>
                 <option value="" disabled selected>Select Gender</option>
                 <option>Male</option>
                 <option>Female</option>
                 <option>Other</option>
             </select>
 
-            <input type="tel" id="emergencyContact" placeholder="Emergency Contact" pattern="^[0-9]{11}$" required>
+            <input type="tel" id="emergencycontact" name="emergencycontact" placeholder="Emergency Contact" pattern="^[0-9]{11}$" required>
 
-            <button type="submit" class="btn">Create Account</button>
+            <button type="submit" name="submit" class="btn">Create Account</button>
         </form>
 
         <div class="login-link">
@@ -105,28 +105,21 @@
 
     <script>
         function validateForm() {
-            const password = document.getElementById("password").value;
-            const confirmPassword = document.getElementById("confirmPassword").value;
-            const phoneNumber = document.getElementById("phoneNumber").value;
-            const emergencyContact = document.getElementById("emergencyContact").value;
+            const phonenumber = document.getElementById("phonenumber").value;
+            const emergencycontact = document.getElementById("emergencycontact").value;
             const age = document.getElementById("age").value;
-
-            if (password !== confirmPassword) {
-                alert("Passwords do not match.");
-                return false;
-            }
 
             if (age < 18) {
                 alert("You must be at least 18 years old to create an account.");
                 return false;
             }
 
-            if (!/^\d{11}$/.test(phoneNumber)) {
+            if (!/^\d{11}$/.test(phonenumber)) {
                 alert("Please enter a valid 11-digit phone number.");
                 return false;
             }
 
-            if (!/^\d{11}$/.test(emergencyContact)) {
+            if (!/^\d{11}$/.test(emergencycontact)) {
                 alert("Please enter a valid 11-digit emergency contact number.");
                 return false;
             }
