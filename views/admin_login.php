@@ -1,3 +1,27 @@
+<?php
+// adminlogin.php
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
+
+    // Simple hardcoded check (replace with DB lookup later)
+    if ($username === 'admin' && $password === '1234') {
+        // Set session
+        $_SESSION['status'] = 'true';
+
+        // Optional cookie for persistence
+        setcookie('status', 'true', time() + 3600, '/', '', false, true);
+
+        header('Location: dashboard.php');
+        exit();
+    } else {
+        echo "<script>alert('Invalid credentials. Try again.'); window.location.href='adminlogin.html';</script>";
+    }
+}
+?>
+
 <html>
 <head>
   <meta charset="UTF-8" />
@@ -105,18 +129,16 @@
       <h1>NIRVOY</h1>
     </div>
     <h2>Admin</h2>
-    <form id="loginForm">
-      <div class="input-group">
-        <label for="username"></label>
-        <input type="text" id="username" placeholder="Name" required />
-      </div>
-      <div class="input-group">
-        <label for="password"></label>
-        <input type="password" id="password" placeholder="Password" required />
-      </div>
-      <button type="submit" class="login-btn">Log in</button>
-      <a href="#" class="forgot-link">Forgot password?</a>
-    </form>
+   <form action="adminlogin.php" method="POST">
+  <div class="input-group">
+    <input type="text" name="username" placeholder="Name" required />
+  </div>
+  <div class="input-group">
+    <input type="password" name="password" placeholder="Password" required />
+  </div>
+  <button type="submit" class="login-btn">Log in</button>
+</form>
+
   </div>
 
   <script>
@@ -132,7 +154,7 @@
 
       if (username === 'admin' && password === '1234') {
   alert('Login successful!');
-  window.location.href = 'dashboard.html'; 
+  window.location.href = 'dashboard.php'; 
 } else {
   alert('Invalid credentials. Try again.');
 }
