@@ -12,12 +12,29 @@
         }
     }
     
-    function getUserById(){
-
+    function forgotPassword($username, $email){
+        $con = getConnection();
+        $sql = "SELECT * FROM users WHERE username = '$username' AND email = '$email'";
+        $result = mysqli_query($con, $sql);
+        
+        if(mysqli_num_rows($result) == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
-    function getAllUsers(){
 
+    function updatePassword($username, $new_password){
+        $con = getConnection();
+        $sql = "UPDATE users SET password = '$new_password' WHERE username = '$username'";
+        
+        if(mysqli_query($con, $sql)) {
+            return mysqli_affected_rows($con) > 0;
+        } else {
+            return false;
+        }
     }
+
     function addUser($user){
         $con=getConnection();
         if(!$con){
@@ -39,7 +56,7 @@
             return true;
         }else{
             echo mysqli_error($con);
-            echo "Error: " . mysqli_error($con) . "<br>";
+            //echo "Error: " . mysqli_error($con) . "<br>";
             return false;
         }
             

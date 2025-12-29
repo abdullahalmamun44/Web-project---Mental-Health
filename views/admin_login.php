@@ -1,17 +1,14 @@
 <?php
-// adminlogin.php
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
 
-    // Simple hardcoded check (replace with DB lookup later)
     if ($username === 'admin' && $password === '1234') {
-        // Set session
+        
         $_SESSION['status'] = 'true';
 
-        // Optional cookie for persistence
         setcookie('status', 'true', time() + 3600, '/', '', false, true);
 
         header('Location: dashboard.php');
