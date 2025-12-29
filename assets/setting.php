@@ -87,7 +87,7 @@
           <h2>CARE FOR YOUR MENTAL HEALTH</h2>
         </div>
         <nav class="menu">
-          <button><a href="               ">Display & Font</a>
+          <button><a href="display_font.php">Display & Font</a>
           </button>
           <button>
             <a href="about.php">About</a>

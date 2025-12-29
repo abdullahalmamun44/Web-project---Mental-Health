@@ -127,11 +127,13 @@
   </div>
 
   <div class="bottom-nav">
-    <a href="dashboard.html"> Dashboard</a>
-    <a href="mood.html"> Mood</a>
-    <a href="consulting.html"> Consulting</a>
-    <a href="library.html"> Library</a>
-    <a href="setting.html"> Setting</a>
+    <a href="dashboard.php"> Dashboard</a>
+    <a href="mood.php"> Mood</a>
+    <a href="consulting.php"> Consulting</a>
+    <a href="library.php"> Library</a>
+    <a href="setting.php"> Setting</a>
   </div>
 </body>
 </html>
+
+

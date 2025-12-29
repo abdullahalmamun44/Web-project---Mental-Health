@@ -162,7 +162,7 @@
   </div>
 
     <div class="emergency-button">
-      <button>Emergency Response</button>
+      <button><a href="emergency.php">Emergency Button</a></button>
     </div>
 
   <div class="bottom-nav">
