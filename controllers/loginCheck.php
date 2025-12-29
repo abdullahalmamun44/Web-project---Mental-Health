@@ -1,9 +1,9 @@
 <?php
     require_once('../models/usermodel.php');
-if(isset($_POST['submit'])==true) {
+    if(isset($_POST['submit'])==true) {
     session_start();
-    $username=$_REQUEST['username'];
-    $password=$_REQUEST['password'];
+    $username=$_POST['username'];
+    $password=$_POST['password'];
     if($username==""| $password== "") {
         echo"Null username/password... Please type again !";
 
@@ -13,9 +13,10 @@ if(isset($_POST['submit'])==true) {
         if($status){
             setcookie('status','true',time()+3000,'/');
             $_SESSION['username']= $username;
-            header('location: ../views/home.php');
+            header('location: ../assets/dashboard.html');
         }else{
-        echo"Invalid username /Password";
+        echo" Login Failed: Invalid username / password...";
+        echo "<br><a href='../views/userlogin.php'>Go back to login</a>";
         }
     }
 
