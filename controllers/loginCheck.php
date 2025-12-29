@@ -11,9 +11,11 @@
         $user =['username'=>$username,'password'=>$password];
         $status=login($user);
         if($status){
+            $_SESSION['status'] = 'true';
+            $_SESSION['username']= $username;
             setcookie('status','true',time()+3000,'/');
             $_SESSION['username']= $username;
-            header('location: ../assets/dashboard.html');
+            header('location: ../assets/dashboard.php');
         }else{
         echo" Login Failed: Invalid username / password...";
         echo "<br><a href='../views/userlogin.php'>Go back to login</a>";
