@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -17,11 +18,53 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative; /* allow positioning of 3-dot menu */
     }
 
     header .title {
       font-size: 1.2rem;
       font-weight: bold;
+    }
+
+    /* Three-dot menu styles */
+    .three-dot-menu {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+    }
+
+    .dot-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: white;
+      min-width: 140px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      border-radius: 5px;
+      z-index: 1000;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background: #f0f0f0;
+    }
+
+    .show {
+      display: block;
     }
 
     .grid {
@@ -123,48 +166,54 @@
   <header>
     <div>←</div>
     <div class="title">Nirvoy</div>
+    <div class="three-dot-menu">
+      <button class="dot-btn">⋮</button>
+      <div class="dropdown-content">
+      <a href="../controllers/logout.php">Logout</a>
+      </div>
+    </div>
   </header>
 
   <div class="grid">
     <div class="tile">
-      <a href="https://www.crazygames.com/game/cg-fc-24"target="_blank">
-      <img src="../assets/image/entertainment 1.jpg"  />
-      <span>CGFC 25</span>
+      <a href="https://www.crazygames.com/game/cg-fc-24" target="_blank">
+        <img src="../assets/image/entertainment 1.jpg" />
+        <span>CGFC 25</span>
       </a>
     </div>
 
     <div class="tile">
-      <a href="https://poki.com/en/soccer"target="_blank">
-      <img src="../assets/image/entertainment 2.jpg"  />
-      <span>RPG Royale</span>
+      <a href="https://poki.com/en/soccer" target="_blank">
+        <img src="../assets/image/entertainment 2.jpg" />
+        <span>RPG Royale</span>
       </a>
     </div>
 
     <div class="tile">
       <a href="https://www.empiresandpuzzles.com/" target="_blank">
-      <img src="../assets/image/entertainment 3.jpg"  />
-      <span>Empires & Puzzles</span>
+        <img src="../assets/image/entertainment 3.jpg" />
+        <span>Empires & Puzzles</span>
       </a>
     </div>
 
     <div class="tile">
       <a href="https://play.google.com/store/apps/details?id=com.mojang.minecraftpe&hl=en&pli=1" target="_blank">
-      <img src="../assets/image/entertainment 4.jpg" />
-      <span>Minecraft</span>
+        <img src="../assets/image/entertainment 4.jpg" />
+        <span>Minecraft</span>
       </a>
     </div>
 
     <div class="tile">
-       <a href="https://www.youtube.com/watch?v=uVamNlJ_TKA" target="_blank">
-      <img src="../assets/image/calling my name.jpg"  /> 
-      <span>Calling My Name</span>
-    </a>
+      <a href="https://www.youtube.com/watch?v=uVamNlJ_TKA" target="_blank">
+        <img src="../assets/image/calling my name.jpg" />
+        <span>Calling My Name</span>
+      </a>
     </div>
 
     <div class="tile">
       <a href="https://www.youtube.com/watch?v=1-NPXJRN7C4" target="_blank">
-      <img src="../assets/image/song.jpg"  />
-      <span>Father's Love</span>
+        <img src="../assets/image/song.jpg" />
+        <span>Father's Love</span>
       </a>
     </div>
   </div>
@@ -179,6 +228,22 @@
     <a href="consulting.php"> Consulting</a>
     <a href="setting.php"> Setting</a>
   </div>
+
+  <script>
+
+    document.querySelector('.dot-btn').addEventListener('click', function() {
+      document.querySelector('.dropdown-content').classList.toggle('show');
+    });
+
+    window.addEventListener('click', function(e) {
+      if (!e.target.matches('.dot-btn')) {
+        const dropdown = document.querySelector('.dropdown-content');
+        if (dropdown.classList.contains('show')) {
+          dropdown.classList.remove('show');
+        }
+      }
+    });
+  </script>
 
 </body>
 </html>

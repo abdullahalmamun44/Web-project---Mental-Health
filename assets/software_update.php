@@ -26,6 +26,48 @@
         text-align: center;
         padding: 10px 0;
         font-size: 20px;
+        position: relative; /* allow positioning of 3-dot menu */
+      }
+
+      /* Three-dot menu styles */
+      .three-dot-menu {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+      }
+
+      .dot-btn {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: white;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        background: white;
+        min-width: 140px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        border-radius: 5px;
+        z-index: 1000;
+      }
+
+      .dropdown-content a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: #333;
+      }
+
+      .dropdown-content a:hover {
+        background: #f0f0f0;
+      }
+
+      .show {
+        display: block;
       }
 
       .page-wrapper {
@@ -166,7 +208,15 @@
     </style>
   </head>
   <body>
-    <div class="top-bar">Software Update</div>
+    <div class="top-bar">
+      Software Update
+      <div class="three-dot-menu">
+        <button class="dot-btn">⋮</button>
+        <div class="dropdown-content">
+          <a href="../controllers/logout.php">Logout</a>
+        </div>
+      </div>
+    </div>
 
     <div class="page-wrapper">
       <div class="card">
@@ -199,7 +249,6 @@
 
         <div class="note">
           Tip: Connect to Wi‑Fi and keep your device charged while updating.
-          [file:1]
         </div>
       </div>
     </div>
@@ -210,22 +259,36 @@
       <a href="consulting.html">Consulting</a>
       <a href="setting.html" class="active">Setting</a>
     </div>
-  </body>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const laterBtn = document.querySelector(".btn-secondary");
-      if (laterBtn) {
-        laterBtn.addEventListener("click", function () {
-          window.location.href = "setting.html";
-        });
-      }
 
-      const downloadBtn = document.querySelector(".btn-primary");
-      if (downloadBtn) {
-        downloadBtn.addEventListener("click", function () {
-          alert("Download started...");
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const laterBtn = document.querySelector(".btn-secondary");
+        if (laterBtn) {
+          laterBtn.addEventListener("click", function () {
+            window.location.href = "setting.html";
+          });
+        }
+
+        const downloadBtn = document.querySelector(".btn-primary");
+        if (downloadBtn) {
+          downloadBtn.addEventListener("click", function () {
+            alert("Download started...");
+          });
+        }
+
+        document.querySelector('.dot-btn').addEventListener('click', function() {
+          document.querySelector('.dropdown-content').classList.toggle('show');
         });
-      }
-    });
-  </script>
+
+        window.addEventListener('click', function(e) {
+          if (!e.target.matches('.dot-btn')) {
+            const dropdown = document.querySelector('.dropdown-content');
+            if (dropdown.classList.contains('show')) {
+              dropdown.classList.remove('show');
+            }
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
