@@ -112,7 +112,7 @@
 </head>
 <body>
   
-    <button class="back-btn" onclick="history.back()">Back</button>
+    
   <div class="login-container">
     <div class="logo">
       <span class="icon"></span>

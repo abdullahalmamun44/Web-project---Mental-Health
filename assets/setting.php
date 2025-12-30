@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,6 +18,48 @@
         color: white;
         padding: 1rem;
         text-align: center;
+        position: relative; /* allow positioning of 3-dot menu */
+      }
+
+      /* Three-dot menu styles */
+      .three-dot-menu {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+      }
+
+      .dot-btn {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: white;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        background: white;
+        min-width: 140px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        border-radius: 5px;
+        z-index: 1000;
+      }
+
+      .dropdown-content a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: #333;
+      }
+
+      .dropdown-content a:hover {
+        background: #f0f0f0;
+      }
+
+      .show {
+        display: block;
       }
 
       .language-select {
@@ -79,6 +122,13 @@
         </select>
       </div>
       <button id="voiceToggle">Voice: Off</button>
+
+      <div class="three-dot-menu">
+        <button class="dot-btn">⋮</button>
+        <div class="dropdown-content">
+        <a href="../controllers/logout.php">Logout</a>
+        </div>
+      </div>
     </header>
 
     <main>
@@ -87,14 +137,9 @@
           <h2>CARE FOR YOUR MENTAL HEALTH</h2>
         </div>
         <nav class="menu">
-          <button><a href="display_font.php">Display & Font</a>
-          </button>
-          <button>
-            <a href="about.php">About</a>
-          </button>
-          <button>
-            <a href="software_update.php">Software update</a>
-          </button>
+          <button><a href="display_font.php">Display & Font</a></button>
+          <button><a href="about.php">About</a></button>
+          <button><a href="software_update.php">Software update</a></button>
         </nav>
       </section>
 
@@ -140,6 +185,19 @@
         .addEventListener("change", function () {
           alert(`Language changed to ${this.options[this.selectedIndex].text}`);
         });
+
+      document.querySelector('.dot-btn').addEventListener('click', function() {
+        document.querySelector('.dropdown-content').classList.toggle('show');
+      });
+
+      window.addEventListener('click', function(e) {
+        if (!e.target.matches('.dot-btn')) {
+          const dropdown = document.querySelector('.dropdown-content');
+          if (dropdown.classList.contains('show')) {
+            dropdown.classList.remove('show');
+          }
+        }
+      });
     </script>
 
     <div class="bottom-nav">
