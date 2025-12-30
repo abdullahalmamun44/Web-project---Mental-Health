@@ -18,7 +18,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: relative; /* allow positioning of 3-dot menu */
+      position: relative; 
     }
 
     header .title {
@@ -26,7 +26,7 @@
       font-weight: bold;
     }
 
-    /* Three-dot menu styles */
+  
     .three-dot-menu {
       position: absolute;
       top: 10px;

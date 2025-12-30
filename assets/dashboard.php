@@ -183,7 +183,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
     <div class="icon-block">
       <a href="tools.php">
         <img src="../assets/image/tools.jpg" />
-        <span>Tools</span>
+        <span>Entertainment</span>
       </a>
     </div>
 
