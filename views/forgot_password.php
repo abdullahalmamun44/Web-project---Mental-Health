@@ -132,7 +132,7 @@
 </head>
 <body>
   
-  <button class="back-btn" onclick="history.back()">Back</button>
+  
   
   <div class="forgot-container">
     <div class="logo">

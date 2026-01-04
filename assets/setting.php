@@ -147,6 +147,7 @@
       <a href="mood.php"> Mood</a>
       <a href="consulting.php"> Consulting</a>
       <a href="setting.php"> Setting</a>
+      
     </div>
   </body>
 </html>
