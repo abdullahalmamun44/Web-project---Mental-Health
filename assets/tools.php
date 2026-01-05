@@ -1,5 +1,11 @@
-
-<!DOCTYPE html>
+<?php
+if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
+    header('location: ../views/userlogin.php');
+    exit();
+}
+?>
+<!DOCTYPE !DOCTYPE html>
+<html lang="en">
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
