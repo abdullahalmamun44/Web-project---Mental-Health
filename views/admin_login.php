@@ -1,8 +1,15 @@
+<?php
+    session_start();
+    if(isset($_COOKIE['status']) !== true){
+        header('location: ../views/admin_login.php');
+    }
+?>
+
 <html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NIRVOY User Login</title>
+  <title>NIRVOY Admin Login</title>
   
   <style>
     body {
@@ -96,43 +103,46 @@
       font-size: 1.2rem;
       cursor: pointer;
     }
-    .back-btn {
-            position: fixed;
-            top: 15px;
-            left: 15px;
-            background: #6c757d;
-            color: white;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-        }
   </style>
 </head>
 <body>
-  
-    
   <div class="login-container">
     <div class="logo">
       <span class="icon"></span>
       <h1>NIRVOY</h1>
     </div>
-    <h2>User Login</h2>
-    <form action="../controllers/loginCheck.php" method="post" enctype="" id="loginForm">
-      <div class="input-group">
-        <label for="username"></label>
-        <input type="text" name="username" id="username"  placeholder="Enter Your username" required />
-      </div>
-      <div class="input-group">
-        <label for="password"></label>
-        <input type="password"  name="password" id="password"  placeholder="Enter Your Password" required />
-      </div>
-      <button type="submit" name="submit" class="login-btn">Log in</button>
-      <a href="forgot_password.php" class="forgot-link">Forgot password?</a>
-      <a href="register.php">Create Account</a> <br>
-      <a href="admin_login.php">Others</a>
-    </form>
+    <h2>Admin</h2>
+   <form action="adminlogin.php" method="POST">
+  <div class="input-group">
+    <input type="text" name="username" placeholder="Name" required />
   </div>
+  <div class="input-group">
+    <input type="password" name="password" placeholder="Password" required />
+  </div>
+  <button type="submit" class="login-btn">Log in</button>
+</form>
+
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (username === '' || password === '') {
+        alert('Please fill in both fields.');
+        return;
+      }
+
+      if (username === 'admin' && password === '1234') {
+  alert('Login successful!');
+  window.location.href = 'dashboard.php'; 
+} else {
+  alert('Invalid credentials. Try again.');
+}
+    }
+  );
+  </script>
 </body>
 </html>

@@ -8,9 +8,9 @@
             font-family: Arial, sans-serif;
             background: linear-gradient(
                 135deg,
-                #d4f7f0,
-                #b7e9d4,
-                #a0d9c3
+                #c8d9eeff,
+                #c2dce4ff,
+                #c1dee7ff
             );
             display: flex;
             justify-content: center;
