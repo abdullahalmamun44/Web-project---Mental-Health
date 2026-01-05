@@ -280,7 +280,6 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       <button><a href="emergency.php">Emergency Button</a></button>
 
 
-      <a href="../controllers/logout.php"> logout</a>
     </div>
 
   <div class="bottom-nav">
