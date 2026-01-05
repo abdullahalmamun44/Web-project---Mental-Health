@@ -65,17 +65,43 @@
             text-decoration: none;
             color: #4CAF50;
         }
+        
+         .check-status {
+            font-size: 12px;
+            margin-top: -5px;
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .available {
+            color: green;
+            background-color: #e7f7e7;
+            border: 1px solid #c3e6c3;
+        }
+        
+        .taken {
+            color: #dc3545;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            font-weight: bold;
+        }
+
+
     </style>
 </head>
 
 <body>
 
     <div class="container">
+
         <h2>Create Account</h2>
 
         <form action="../controllers/registerCheck.php" method="POST" id="createAccountForm" onsubmit="return validateForm()" enctype="">
             <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
-            <input type="text" id="username" name="username" placeholder="username" required>
+            <input type="text" id="username" name="username" placeholder="username" required onblur="check_username()">
+            <div id="usernameMessage" class="check-status"></div>
 
             <input type="tel" id="phonenumber" name="phonenumber" placeholder="Phone Number" pattern="^[0-9]{11}$" required>
 
@@ -125,6 +151,32 @@
             }
 
             return true;
+        }
+
+        function check_username(){
+            const username=document.getElementById('username').value;
+            const messageDiv=document.getElementById('usernameMessage');
+            messageDiv.style.display='none';
+            messageDiv.innerHTML='';
+            if(username.length<3){
+                return;
+            }
+            const xhr=new XMLHttpRequest();
+            xhr.open('POST','../controllers/check_Username.php',true);
+            xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4 && xhr.status==200){
+                    if(xhr.responseText=='username available'){
+                        messageDiv.className='check-status available';
+                        messageDiv.innerHTML=' username is available';
+                    } else if(xhr.responseText=='username taken'){
+                        messageDiv.className='check-status taken';
+                        messageDiv.innerHTML=' username is already taken';
+                    }
+                    messageDiv.style.display='block';
+                }
+            };
+            xhr.send('username='+username);
         }
     </script>
 

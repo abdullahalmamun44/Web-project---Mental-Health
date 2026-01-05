@@ -11,6 +11,17 @@
         $gender= $_REQUEST['gender'];
         $age=$_REQUEST['age'];
         $emergencycontact = $_REQUEST['emergencycontact'];
+        
+        $con = getConnection();
+        $check_sql= "SELECT * FROM users WHERE username = '" . mysqli_real_escape_string($con, $username) . "'";
+        $check_result=mysqli_query($con,$check_sql);
+
+        if(mysqli_num_rows($check_result)>0){
+            echo "username already taken. Try another one.";
+            header('location: ../views/register.php?');
+            exit();
+        }
+        
 
 
         if($fullname=="" || $username == "" || $phonenumber == "" || $password == "" || $email == ""
