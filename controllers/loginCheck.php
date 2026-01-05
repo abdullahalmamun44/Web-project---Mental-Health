@@ -11,8 +11,6 @@
         $user =['username'=>$username,'password'=>$password];
         $status=login($user);
         if($status){
-            $_SESSION['status'] = 'true';
-            $_SESSION['username']= $username;
             setcookie('status','true',time()+3000,'/');
             $_SESSION['username']= $username;
             header('location: ../assets/dashboard.php');

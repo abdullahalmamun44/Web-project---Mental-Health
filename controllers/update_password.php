@@ -13,13 +13,10 @@ if(isset($_POST['submit']) == true) {
     $new_password = trim($_POST['new_password']);
     $confirm_password = trim($_POST['confirm_password']);
     
-    // Verify session username matches form username
     if($username !== $_SESSION['reset_user']) {
         header('location: ../views/reset_password.php');
         exit();
     }
-    
-    // Validation
     if($new_password !== $confirm_password) {
         header('location: ../views/reset_password.php');
         exit();

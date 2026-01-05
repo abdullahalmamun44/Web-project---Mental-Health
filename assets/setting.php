@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+<?php
+if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
+    header('location: ../views/userlogin.php');
+    exit();
+}
+?>
+<!DOCTYPE !DOCTYPE html>
+<html lang="en">
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -205,6 +212,7 @@
       <a href="mood.php"> Mood</a>
       <a href="consulting.php"> Consulting</a>
       <a href="setting.php"> Setting</a>
+      
     </div>
   </body>
 </html>

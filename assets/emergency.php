@@ -1,3 +1,9 @@
+<?php
+if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
+    header('location: ../views/userlogin.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

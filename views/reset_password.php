@@ -133,7 +133,6 @@ if(!isset($_SESSION['reset_user'])) {
 </head>
 <body>
   
-  <button class="back-btn" onclick="history.back()">Back</button>
   
   <div class="reset-container">
     <div class="logo">
