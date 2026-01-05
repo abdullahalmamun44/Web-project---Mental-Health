@@ -83,6 +83,73 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
     .show {
       display: block;
     }
+    .top-icons {
+      display: flex;
+      justify-content: space-around;
+      padding: 1rem;
+      background: white;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .icon-block {
+      text-align: center;
+      width: 80px;
+      margin: 0.5rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .icon-block img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      margin-bottom: 0.5rem;
+    }
+    .icon-block span {
+      display: block;
+      font-size: 0.9rem;
+      color: #333;
+    }
+    .icon-block:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+    }
+
+    /* Three-dot menu */
+    .three-dot-menu {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    .dot-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 5px;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: white;
+      min-width: 120px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      border-radius: 5px;
+      z-index: 1000;
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: #333;
+    }
+    .dropdown-content a:hover {
+      background: #f0f0f0;
+    }
+    .show {
+      display: block;
+    }
 
     .banner {
       margin: 1rem;
@@ -209,10 +276,12 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
     <p>Sahyog The Helping Hand</p>
   </div>
 
-  <div class="emergency-button">
-    <button><a href="emergency.php" style="color:white; text-decoration:none;">Emergency Button</a></button><br>
-    
-  </div>
+    <div class="emergency-button">
+      <button><a href="emergency.php">Emergency Button</a></button>
+
+
+      <a href="../controllers/logout.php"> logout</a>
+    </div>
 
   <div class="bottom-nav">
     <a href="dashboard.php" class="active">Dashboard</a>

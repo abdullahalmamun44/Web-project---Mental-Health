@@ -4,7 +4,8 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
     exit();
 }
 ?>
-<!DOCTYPE html>
+<!DOCTYPE !DOCTYPE html>
+<html lang="en">
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
