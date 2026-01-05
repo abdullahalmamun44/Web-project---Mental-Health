@@ -1,4 +1,11 @@
-<html>
+<?php
+if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
+    header('location: ../views/userlogin.php');
+    exit();
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -17,6 +24,48 @@
       padding: 1rem;
       text-align: center;
       font-size: 1.2rem;
+      position: relative; /* allow positioning of 3-dot menu */
+    }
+
+    /* Three-dot menu styles */
+    .three-dot-menu {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+    }
+
+    .dot-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: white;
+      min-width: 140px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      border-radius: 5px;
+      z-index: 1000;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background: #f0f0f0;
+    }
+
+    .show {
+      display: block;
     }
 
     .section {
@@ -98,7 +147,15 @@
   </style>
 </head>
 <body>
-  <header>PSYCHIATRY Mood Disorders</header>
+  <header>
+    PSYCHIATRY Mood Disorders
+    <div class="three-dot-menu">
+      <button class="dot-btn">⋮</button>
+      <div class="dropdown-content">
+        <a href="../controllers/logout.php">Logout</a>
+      </div>
+    </div>
+  </header>
 
   <div class="section">
     <h2>Mood Disorders</h2>
@@ -106,7 +163,7 @@
     <p>Understanding emotional fluctuations and mental health conditions that affect mood stability.</p>
 
     <div class="mood disorderd">
-    <a href="https://my.clevelandclinic.org/health/diseases/17843-mood-disorders" target="_blank">Mood Swings Cleveland Clinic</a>
+      <a href="https://my.clevelandclinic.org/health/diseases/17843-mood-disorders" target="_blank">Mood Swings Cleveland Clinic</a>
     </div>
   </div>
 
@@ -115,8 +172,8 @@
     <img src="../assets/image/mood boost.jpg" alt="Mood Boost Graphic" />
     <p>Try these fun and effective ways to lift your mood!</p>
 
-     <div class="mood disorderd">
-    <a href="https://my.clevelandclinic.org/health/diseases/17843-mood-disorders" target="_blank">Mood Swings Cleveland Clinic</a>
+    <div class="mood disorderd">
+      <a href="https://my.clevelandclinic.org/health/diseases/17843-mood-disorders" target="_blank">Mood Swings Cleveland Clinic</a>
     </div>
   </div>
 
@@ -126,7 +183,7 @@
     <p>Track your heart rate to monitor emotional and physical well-being.</p>
 
     <div class="mood disorderd">
-    <a href="https://my.clevelandclinic.org/health/diagnostics/heart-rate" target="_blank">Mood Swings Cleveland Clinic</a>
+      <a href="https://my.clevelandclinic.org/health/diagnostics/heart-rate" target="_blank">Mood Swings Cleveland Clinic</a>
     </div>
   </div>
 
@@ -142,5 +199,21 @@
     <a href="consulting.php">Consulting</a>
     <a href="setting.php"> Setting</a>
   </div>
+
+  <script>
+
+    document.querySelector('.dot-btn').addEventListener('click', function() {
+      document.querySelector('.dropdown-content').classList.toggle('show');
+    });
+
+    window.addEventListener('click', function(e) {
+      if (!e.target.matches('.dot-btn')) {
+        const dropdown = document.querySelector('.dropdown-content');
+        if (dropdown.classList.contains('show')) {
+          dropdown.classList.remove('show');
+        }
+      }
+    });
+  </script>
 </body>
 </html>

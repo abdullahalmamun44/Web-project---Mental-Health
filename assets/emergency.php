@@ -1,3 +1,9 @@
+<?php
+if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
+    header('location: ../views/userlogin.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +25,48 @@
       text-align: center;
       font-size: 1.2rem;
       font-weight: bold;
+      position: relative; /* allow positioning of 3-dot menu */
+    }
+
+    /* Three-dot menu styles */
+    .three-dot-menu {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+    }
+
+    .dot-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: white;
+      min-width: 140px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      border-radius: 5px;
+      z-index: 1000;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background: #f0f0f0;
+    }
+
+    .show {
+      display: block;
     }
  
     .chat-container {
@@ -104,7 +152,15 @@
 </head>
 <body>
  
-  <header>Emergency Supportt</header>
+  <header>
+    Emergency Support
+    <div class="three-dot-menu">
+      <button class="dot-btn">⋮</button>
+      <div class="dropdown-content">
+       <a href="../controllers/logout.php">Logout</a>
+      </div>
+    </div>
+  </header>
  
   <div class="chat-container" id="chat">
     <div class="message bot">Hello, I’m Nirvoy Emergency Assistant. How are you feeling right now?</div>
@@ -134,7 +190,6 @@
       userMsg.textContent = text;
       chat.appendChild(userMsg);
  
-   
       setTimeout(() => {
         const botMsg = document.createElement("div");
         botMsg.className = "message bot";
@@ -156,10 +211,21 @@
  
     function sendSOS() {
       alert("SOS message sent to consultant:\n\n'URGENT: Patient needs immediate support.'");
- 
     }
+
+    document.querySelector('.dot-btn').addEventListener('click', function() {
+      document.querySelector('.dropdown-content').classList.toggle('show');
+    });
+
+    window.addEventListener('click', function(e) {
+      if (!e.target.matches('.dot-btn')) {
+        const dropdown = document.querySelector('.dropdown-content');
+        if (dropdown.classList.contains('show')) {
+          dropdown.classList.remove('show');
+        }
+      }
+    });
   </script>
  
 </body>
 </html>
- 
