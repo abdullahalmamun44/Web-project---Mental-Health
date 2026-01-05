@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +25,9 @@
     header .title {
       font-size: 1.2rem;
       font-weight: bold;
+      position: absolute; 
+      left: 50%;
+      transform: translateX(-50%);
     }
 
   
