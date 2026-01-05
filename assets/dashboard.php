@@ -1,7 +1,23 @@
 <?php
-if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
-    header('location: ../views/userlogin.php');
-    exit();
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
+
+    // Example credentials (replace with DB check)
+    if ($username === 'admin' && $password === '1234') {
+        // Set session
+        $_SESSION['status'] = 'true';
+
+        // Set cookie (valid for 1 hour)
+        setcookie('status', 'true', time() + 3600, "/", "", false, true);
+
+        header("Location: dashboard.php");
+        exit();
+    } else {
+        echo "Invalid credentials!";
+    }
 }
 ?>
 

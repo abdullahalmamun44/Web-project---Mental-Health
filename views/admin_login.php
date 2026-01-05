@@ -1,22 +1,8 @@
 <?php
-session_start();
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
-
-    if ($username === 'admin' && $password === '1234') {
-        
-        $_SESSION['status'] = 'true';
-
-        setcookie('status', 'true', time() + 3600, '/', '', false, true);
-
-        header('Location: dashboard.php');
-        exit();
-    } else {
-        echo "<script>alert('Invalid credentials. Try again.'); window.location.href='adminlogin.html';</script>";
+    session_start();
+    if(isset($_COOKIE['status']) !== true){
+        header('location: ../views/admin_login.php');
     }
-}
 ?>
 
 <html>

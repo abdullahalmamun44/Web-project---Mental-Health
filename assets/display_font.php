@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <title>Nirvoy – Display & Font</title>
     <style>
-      /* Basic reset and default font */
+      
       * {
         box-sizing: border-box;
         margin: 0;
@@ -13,7 +13,7 @@
         font-family: Arial, sans-serif;
       }
 
-      /* Page layout */
+     
       body {
         background: #f7f8ff;
         color: #222;
@@ -29,10 +29,10 @@
         text-align: center;
         padding: 10px 0;
         font-size: 22px;
-        position: relative; /* allow positioning of 3-dot menu */
+        position: relative; 
       }
 
-      /* Three-dot menu styles */
+     
       .three-dot-menu {
         position: absolute;
         top: 8px;

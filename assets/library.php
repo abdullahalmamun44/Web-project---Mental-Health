@@ -19,10 +19,10 @@
       padding: 1rem;
       text-align: center;
       font-size: 1.2rem;
-      position: relative; /* allow positioning of 3-dot menu */
+      position: relative; 
     }
 
-    /* Three-dot menu styles */
+  
     .three-dot-menu {
       position: absolute;
       top: 10px;
