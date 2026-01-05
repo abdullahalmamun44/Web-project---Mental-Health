@@ -1,3 +1,4 @@
+
 <html>
 <head>
   <meta charset="UTF-8" />
@@ -18,10 +19,9 @@
       text-align: center;
       font-size: 1.4rem;
       font-weight: bold;
-      position: relative; /* allow positioning of 3-dot menu */
+      position: relative;
     }
 
-    /* Three-dot menu styles */
     .three-dot-menu {
       position: absolute;
       top: 10px;

@@ -25,10 +25,10 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
         color: white;
         padding: 1rem;
         text-align: center;
-        position: relative; /* allow positioning of 3-dot menu */
+        position: relative;
       }
 
-      /* Three-dot menu styles */
+     
       .three-dot-menu {
         position: absolute;
         top: 10px;

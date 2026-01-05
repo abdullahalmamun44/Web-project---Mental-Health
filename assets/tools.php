@@ -31,6 +31,9 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
     header .title {
       font-size: 1.2rem;
       font-weight: bold;
+      position: absolute; 
+      left: 50%;
+      transform: translateX(-50%);
     }
 
   

@@ -24,7 +24,6 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
         flex-direction: column;
       }
 
-      /* blue header bar like other pages */
       .top-bar {
         background: #4285f4;
         color: #ffffff;
@@ -32,10 +31,10 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
         text-align: center;
         padding: 10px 0;
         font-size: 20px;
-        position: relative; /* allow positioning of 3-dot menu */
+        position: relative; 
       }
 
-      /* Three-dot menu styles */
+    
       .three-dot-menu {
         position: absolute;
         top: 10px;
