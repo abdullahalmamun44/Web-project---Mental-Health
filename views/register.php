@@ -117,13 +117,6 @@
 
     <input type="tel" id="emergencycontact" name="emergencycontact" placeholder="Emergency Contact" pattern="^[0-9]{11}$" required>
 
-    <!-- NEW: Role selector -->
-    <select id="role" name="role" required>
-        <option value="" disabled selected>Select Role</option>
-        <option value="user">User</option>
-        <option value="admin">Admin</option>
-    </select>
-
     <button type="submit" name="submit" class="btn">Create Account</button>
 </form>
 

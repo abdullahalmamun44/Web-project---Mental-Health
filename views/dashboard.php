@@ -1,11 +1,11 @@
-
 <?php
 session_start();
-if (!isset($_SESSION['admin']) || !isset($_COOKIE['status'])) {
-    header("Location: ../views/admin_login.php");
+if (!isset($_SESSION['username']) || !isset($_COOKIE['status'])) {
+    header("Location: userlogin.php");
     exit();
 }
 ?>
+
 
 
 
