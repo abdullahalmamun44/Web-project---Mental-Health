@@ -1,42 +1,41 @@
 <?php
-require_once('../models/database.php');
+require_once('../models/usermodel.php');
+if(isset($_POST['submit']) == true){
+        session_start();
+        $fullname = $_REQUEST['fullname'];
+        $phonenumber = $_REQUEST['phonenumber'];
+        $username = $_REQUEST['username'];
+        $password = $_REQUEST['password'];
+        $email = $_REQUEST['email'];
+        $gender= $_REQUEST['gender'];
+        $age=$_REQUEST['age'];
+        $emergencycontact = $_REQUEST['emergencycontact'];
+        
+        $con = getConnection();
+        $check_sql= "SELECT * FROM users WHERE username = '" . mysqli_real_escape_string($con, $username) . "'";
+        $check_result=mysqli_query($con,$check_sql);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $fullname = $_POST['fullname'];
-    $username = $_POST['username'];
-    $phonenumber = $_POST['phonenumber'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $age = $_POST['age'];
-    $gender = $_POST['gender'];
-    $emergencycontact = $_POST['emergencycontact'];
-    $role = $_POST['role']; // NEW
-
-    $con = getConnection();
-
-    if ($role === 'user') {
-       $sql = "INSERT INTO user (fullName, userName, phonenumber, email, password, age, gender, emergencyContact)
-        VALUES ('$fullname','$username','$phonenumber','$email','$password','$age','$gender','$emergencycontact')";
-
-        if (mysqli_query($con, $sql)) {
-            header("Location: ../views/userlogin.php"); // redirect to user login
-            exit();
-        } else {
-            echo "Error: " . mysqli_error($con);
+        if(mysqli_num_rows($check_result)>0){
+            echo "username already taken. Try another one.";
+            header('location: ../views/register.php?');
+                       exit();
         }
-    } elseif ($role === 'admin') {
-       $sql = "INSERT INTO admin (userName, password) 
-        VALUES ('$username','$password')";
 
+        if($fullname=="" || $username == "" || $phonenumber == "" || $password == "" || $email == ""
+         || $age=="" || $gender=="" || $emergencycontact==""){
+            echo "null username/password/email... please type again!";
+        }else{
+            $user = ['username'=> $username, 'password'=> $password, 'email'=> $email ,'fullname'=>$fullname,
+            'phonenumber'=>$phonenumber,'age'=>$age,'gender'=>$gender,'emergencycontact'=>$emergencycontact];
+            $status=addUser($user);
+            if($status){
+                header('location: ../views/userlogin.php');
+            }else{
+                header('location: ../views/register.php');
 
-        if (mysqli_query($con, $sql)) {
-            header("Location: ../views/admin_login.php"); // redirect to admin login
-            exit();
-        } else {
-            echo "Error: " . mysqli_error($con);
-        }
-    } else {
-        echo "Invalid role selected!";
+            }
+                    }
+    }else{
+        header('location: ../views/register.php');
     }
-}
-?>
+    ?>

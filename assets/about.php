@@ -178,7 +178,7 @@
   </div>
 
   <div class="bottom-nav">
-    <a href="dashboard.php"> Dashboard</a>
+    <a href="../views/dashboard.php"> Dashboard</a>
     <a href="mood.php"> Mood</a>
     <a href="consulting.php"> Consulting</a>
     <a href="library.php"> Library</a>

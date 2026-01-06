@@ -14,9 +14,10 @@
             setcookie('status','true',time()+3000,'/');
             $_SESSION['username']= $username;
             header('location: ../views/dashboard.php');
-        }else{
-        echo" Login Failed: Invalid username / password...";
-        echo "<br><a href='../views/userlogin.php'>Go back to login</a>";
+        }else{echo "<script>
+                    alert('Login Failed: Invalid username or password');
+                    window.location.href='../views/userlogin.php';
+                  </script>";
         }
     }
 
