@@ -98,31 +98,35 @@
 
         <h2>Create Account</h2>
 
-        <form action="../controllers/registerCheck.php" method="POST" id="createAccountForm" onsubmit="return validateForm()" enctype="">
-            <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
-            <input type="text" id="username" name="username" placeholder="username" required onblur="check_username()">
-            <div id="usernameMessage" class="check-status"></div>
+       <form action="../controllers/registerCheck.php" method="POST" id="createAccountForm" onsubmit="return validateForm()">
+    <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+    <input type="text" id="username" name="username" placeholder="Username" required onblur="check_username()">
+    <div id="usernameMessage" class="check-status"></div>
 
-            <input type="tel" id="phonenumber" name="phonenumber" placeholder="Phone Number" pattern="^[0-9]{11}$" required>
+    <input type="tel" id="phonenumber" name="phonenumber" placeholder="Phone Number" pattern="^[0-9]{11}$" required>
+    <input type="email" id="email" name="email" placeholder="Email Address" required>
+    <input type="password" id="password" name="password" placeholder="Password" required>
+    <input type="number" id="age" name="age" placeholder="Age" min="18" required>
 
-            <input type="email" id="email" name="email" placeholder="Email Address" required>
+    <select id="gender" name="gender" required>
+        <option value="" disabled selected>Select Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+    </select>
 
-            <input type="password" id="password" name="password" placeholder="Password" required>
-            
+    <input type="tel" id="emergencycontact" name="emergencycontact" placeholder="Emergency Contact" pattern="^[0-9]{11}$" required>
 
-            <input type="number" id="age" name="age" placeholder="Age" min="18" required>
+    <!-- NEW: Role selector -->
+    <select id="role" name="role" required>
+        <option value="" disabled selected>Select Role</option>
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
+    </select>
 
-            <select id="gender" name="gender" required>
-                <option value="" disabled selected>Select Gender</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
-            </select>
+    <button type="submit" name="submit" class="btn">Create Account</button>
+</form>
 
-            <input type="tel" id="emergencycontact" name="emergencycontact" placeholder="Emergency Contact" pattern="^[0-9]{11}$" required>
-
-            <button type="submit" name="submit" class="btn">Create Account</button>
-        </form>
 
         <div class="login-link">
             Already have an account? <a href="userlogin.php">Login</a>
