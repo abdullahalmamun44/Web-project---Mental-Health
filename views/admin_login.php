@@ -1,15 +1,9 @@
-<?php
-    session_start();
-    if(isset($_COOKIE['status']) !== true){
-        header('location: ../views/admin_login.php');
-    }
-?>
 
 <html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NIRVOY Admin Login</title>
+  <title>NIRVOY Therapist Login</title>
   
   <style>
     body {
@@ -112,16 +106,18 @@
       <h1>NIRVOY</h1>
     </div>
     <h2>Admin</h2>
-   <form action="adminlogin.php" method="POST">
-  <div class="input-group">
-    <input type="text" name="username" placeholder="Name" required />
-  </div>
-  <div class="input-group">
-    <input type="password" name="password" placeholder="Password" required />
-  </div>
-  <button type="submit" class="login-btn">Log in</button>
-</form>
-
+    <form id="loginForm">
+      <div class="input-group">
+        <label for="username"></label>
+        <input type="text" id="username" placeholder="Name" required />
+      </div>
+      <div class="input-group">
+        <label for="password"></label>
+        <input type="password" id="password" placeholder="Password" required />
+      </div>
+      <button type="submit" class="login-btn">Log in</button>
+      <a href="#" class="forgot-link">Forgot password?</a>
+    </form>
   </div>
 
   <script>

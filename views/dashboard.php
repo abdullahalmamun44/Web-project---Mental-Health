@@ -1,3 +1,5 @@
+
+
 <?php
 session_start();
 
@@ -251,28 +253,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
   <div class="top-icons">
     <div class="icon-block">
-      <a href="phobia.php">
+      <a href="../assets/phobia.php">
         <img src="../assets/image/phobia.jpeg" />
         <span>Phobia</span>
       </a>
     </div>
 
     <div class="icon-block">
-      <a href="chatbot.php">
+      <a href="../assets/chatbot.php">
         <img src="../assets/image/chat bot.webp" />
         <span>Chatbot</span>
       </a>
     </div>
 
     <div class="icon-block">
-      <a href="tools.php">
+      <a href="../assets/Entertainment.php">
         <img src="../assets/image/tools.jpg" />
         <span>Entertainment</span>
       </a>
     </div>
 
     <div class="icon-block">
-      <a href="library.php">
+      <a href="../assets/library.php">
         <img src="../assets/image/library.png" />
         <span>Library</span>
       </a>
@@ -294,16 +296,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </div>
 
     <div class="emergency-button">
-      <button><a href="emergency.php">Emergency Button</a></button>
+      <button><a href="../assets/emergency.php">Emergency Button</a></button>
 
 
     </div>
 
   <div class="bottom-nav">
     <a href="dashboard.php" class="active">Dashboard</a>
-    <a href="mood.php">Mood</a>
-    <a href="consulting.php">Consulting</a>
-    <a href="setting.php">Setting</a>
+    <a href="../assets/mood.php">Mood</a>
+    <a href="../assets/consulting.php">Consulting</a>
+    <a href="../assets/setting.php">Setting</a>
   </div>
 
   <script>

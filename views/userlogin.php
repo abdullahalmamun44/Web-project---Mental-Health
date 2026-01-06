@@ -131,7 +131,10 @@
       <button type="submit" name="submit" class="login-btn">Log in</button>
       <a href="forgot_password.php" class="forgot-link">Forgot password?</a>
       <a href="register.php">Create Account</a> <br>
+    
+
       <a href="admin_login.php">Others</a>
+
     </form>
   </div>
 </body>
