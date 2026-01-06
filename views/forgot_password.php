@@ -139,6 +139,7 @@
       <span class="icon"></span>
       <h1>NIRVOY</h1>
     </div>
+    <br>
     
     <h2>Forgot Password</h2>
     
