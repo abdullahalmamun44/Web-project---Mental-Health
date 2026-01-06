@@ -233,7 +233,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
   </div>
 
   <div class="bottom-nav">
-    <a href="dashboard.php" class="active"> Dashboard</a>
+    <a href="../views/dashboard.php" class="active"> Dashboard</a>
     <a href="mood.php"> Mood</a>
     <a href="consulting.php"> Consulting</a>
     <a href="setting.php"> Setting</a>
