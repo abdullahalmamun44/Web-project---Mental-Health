@@ -254,7 +254,7 @@ if (!isset($_SESSION['admin']) || !isset($_COOKIE['status'])) {
     </div>
 
     <div class="icon-block">
-      <a href="../assets/Entertainment.php">
+      <a href="../assets/entertainment.php">
         <img src="../assets/image/tools.jpg" />
         <span>Entertainment</span>
       </a>

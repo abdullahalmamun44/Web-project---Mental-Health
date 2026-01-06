@@ -80,7 +80,7 @@
         <input type="password" name="password" placeholder="Password" required />
       </div>
       <button type="submit" class="login-btn">Log in</button>
-      <a href="#" class="forgot-link">Forgot password?</a>
+      <a href="forgot_password.php" class="forgot-link">Forgot password?</a>
        <a href="register.php">Create Account</a> <br>
     </form>
   </div>

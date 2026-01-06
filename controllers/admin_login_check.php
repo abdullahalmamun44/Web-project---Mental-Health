@@ -25,7 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "<br><a href='../views/admin_login.php'>Try again</a>";
         }
     }
-} else {
+
+     else {
     header("Location: ../views/admin_login.php");
 }
 ?>
