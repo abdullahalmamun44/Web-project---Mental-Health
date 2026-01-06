@@ -1,3 +1,4 @@
+
 <html>
 <head>
   <meta charset="UTF-8" />
@@ -18,10 +19,9 @@
       text-align: center;
       font-size: 1.4rem;
       font-weight: bold;
-      position: relative; /* allow positioning of 3-dot menu */
+      position: relative;
     }
 
-    /* Three-dot menu styles */
     .three-dot-menu {
       position: absolute;
       top: 10px;
@@ -178,7 +178,7 @@
   </div>
 
   <div class="bottom-nav">
-    <a href="dashboard.php"> Dashboard</a>
+    <a href="../views/dashboard.php"> Dashboard</a>
     <a href="mood.php"> Mood</a>
     <a href="consulting.php"> Consulting</a>
     <a href="library.php"> Library</a>

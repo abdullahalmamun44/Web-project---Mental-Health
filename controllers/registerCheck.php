@@ -1,7 +1,6 @@
 <?php
-    require_once('../models/usermodel.php');
-
-    if(isset($_POST['submit']) == true){
+require_once('../models/usermodel.php');
+if(isset($_POST['submit']) == true){
         session_start();
         $fullname = $_REQUEST['fullname'];
         $phonenumber = $_REQUEST['phonenumber'];
@@ -19,10 +18,8 @@
         if(mysqli_num_rows($check_result)>0){
             echo "username already taken. Try another one.";
             header('location: ../views/register.php?');
-            exit();
+                       exit();
         }
-        
-
 
         if($fullname=="" || $username == "" || $phonenumber == "" || $password == "" || $email == ""
          || $age=="" || $gender=="" || $emergencycontact==""){
@@ -37,9 +34,8 @@
                 header('location: ../views/register.php');
 
             }
-        }
+                    }
     }else{
         header('location: ../views/register.php');
     }
-
-?>
+    ?>

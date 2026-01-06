@@ -8,9 +8,9 @@
             font-family: Arial, sans-serif;
             background: linear-gradient(
                 135deg,
-                #d4f7f0,
-                #b7e9d4,
-                #a0d9c3
+                #c8d9eeff,
+                #c2dce4ff,
+                #c1dee7ff
             );
             display: flex;
             justify-content: center;
@@ -98,12 +98,12 @@
 
         <h2>Create Account</h2>
 
-        <form action="../controllers/registerCheck.php" method="POST" id="createAccountForm" onsubmit="return validateForm()" enctype="">
+            <form action="../controllers/registerCheck.php" method="POST" id="createAccountForm" onsubmit="return validateForm()" enctype="">
             <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
             <input type="text" id="username" name="username" placeholder="username" required onblur="check_username()">
             <div id="usernameMessage" class="check-status"></div>
 
-            <input type="tel" id="phonenumber" name="phonenumber" placeholder="Phone Number" pattern="^[0-9]{11}$" required>
+           <input type="tel" id="phonenumber" name="phonenumber" placeholder="Phone Number" pattern="^[0-9]{11}$" required>
 
             <input type="email" id="email" name="email" placeholder="Email Address" required>
 
@@ -123,6 +123,7 @@
 
             <button type="submit" name="submit" class="btn">Create Account</button>
         </form>
+
 
         <div class="login-link">
             Already have an account? <a href="userlogin.php">Login</a>

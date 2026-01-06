@@ -10,7 +10,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
     <meta charset="UTF-8" />
     <title>Nirvoy – Display & Font</title>
     <style>
-      /* Basic reset and default font */
+      
       * {
         box-sizing: border-box;
         margin: 0;
@@ -18,7 +18,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
         font-family: Arial, sans-serif;
       }
 
-      /* Page layout */
+     
       body {
         background: #f7f8ff;
         color: #222;
@@ -34,10 +34,10 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
         text-align: center;
         padding: 10px 0;
         font-size: 22px;
-        position: relative; /* allow positioning of 3-dot menu */
+        position: relative; 
       }
 
-      /* Three-dot menu styles */
+     
       .three-dot-menu {
         position: absolute;
         top: 8px;
@@ -218,7 +218,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
     </div>
 
     <div class="bottom-nav">
-      <a href="dashboard.php">Dashboard</a>
+      <a href="../views/dashboard.php">Dashboard</a>
       <a href="mood.php">Mood</a>
       <a href="consulting.php">Consulting</a>
       <a href="setting.php" class="active">Setting</a>
