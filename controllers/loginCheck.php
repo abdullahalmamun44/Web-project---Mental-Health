@@ -9,9 +9,12 @@
 
     }else{
         $user =['username'=>$username,'password'=>$password];
-        $status=login($user);
-        if($status){
+        $userData=login($user);
+        if($userData){
+            $_SESSION['user_data']=$userData;
+
             setcookie('status','true',time()+3000,'/');
+            setcookie('username',$username,time()+3000,'/');
             $_SESSION['username']= $username;
             header('location: ../views/dashboard.php');
         }else{echo "<script>

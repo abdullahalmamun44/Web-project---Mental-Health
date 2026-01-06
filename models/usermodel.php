@@ -1,4 +1,5 @@
 <?php
+
     require_once('database.php');
     
     function login($user){
@@ -6,7 +7,7 @@
         $sql="select * from users where username='{$user['username']}' and password='{$user['password']}'";
         $result=mysqli_query($con,$sql);
         if (mysqli_num_rows($result)==1){
-            return true;
+            return mysqli_fetch_assoc($result);
         }else{
             return false;
         }
@@ -67,4 +68,22 @@
     function updateUser(){
 
     }
+    function checkUsername($username){
+        ob_start();
+    $con = getConnection();
+    if(!$con){
+        ob_end_clean();
+        return false;
+    }
+    
+    $username = mysqli_real_escape_string($con, trim($username));
+    $sql = "SELECT * FROM users WHERE username='$username'";
+    $result = mysqli_query($con, $sql);
+    ob_end_clean() ;
+    if($result && mysqli_num_rows($result) > 0){
+        return true; 
+    } else {
+        return false; 
+    }
+}
 ?>
