@@ -108,7 +108,7 @@
     <h2>Admin</h2>
     <form id="loginForm">
       <div class="input-group">
-        <label for="username"></label>
+        <label for="username"></label><br>
         <input type="text" id="username" placeholder="Name" required />
       </div>
       <div class="input-group">
