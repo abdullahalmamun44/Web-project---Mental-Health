@@ -100,6 +100,31 @@
     }
     return false;
 }
-    
+    function updateUser($username, $updateData) {
+        $con = getConnection();
+        
+        $fullName = mysqli_real_escape_string($con, $updateData['fullName']);
+        $email = mysqli_real_escape_string($con, $updateData['email']);
+        $phonenumber = mysqli_real_escape_string($con, $updateData['phonenumber']);
+        $age = mysqli_real_escape_string($con, $updateData['age']);
+        $gender = mysqli_real_escape_string($con, $updateData['gender']);
+        $emergencyContact = mysqli_real_escape_string($con, $updateData['emergencyContact']);
+        $username = mysqli_real_escape_string($con, $username);
+        
+        $sql = "UPDATE users SET 
+                fullName = '$fullName',
+                email = '$email',
+                phonenumber = '$phonenumber',
+                age = '$age',
+                gender = '$gender',
+                emergencyContact = '$emergencyContact'
+                WHERE username = '$username'";
+        
+        if(mysqli_query($con, $sql)) {
+            return mysqli_affected_rows($con) > 0;
+        } else {
+            return false;
+        }
+    }
 
 ?>
