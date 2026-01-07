@@ -43,12 +43,19 @@
         return false;
     }
     
-    $result = mysqli_query($con, "SHOW TABLES");
+    /*$result = mysqli_query($con, "SHOW TABLES");
     echo "Available tables: ";
     while($row = mysqli_fetch_array($result)) {
         echo $row[0] . ", ";
     }
-    echo "<br>";
+    echo "<br>";*/
+
+    $check_sql = "SELECT * FROM users WHERE username = '{$user['username']}'";
+    $check_result = mysqli_query($con, $check_sql);
+    
+    if(mysqli_num_rows($check_result) > 0){
+        return false; 
+    }
 
         $sql= "INSERT INTO users VALUES ('{$user['fullname']}','{$user['username']}','{$user['phonenumber']}',
         '{$user['email']}','{$user['password']}','{$user['age']}','{$user['gender']}','{$user['emergencycontact']}')";
@@ -61,12 +68,6 @@
             return false;
         }
             
-    }
-    function deleteUser(){
-
-    }
-    function updateUser(){
-
     }
     function checkUsername($username){
         ob_start();
@@ -86,4 +87,19 @@
         return false; 
     }
 }
+    function getUserByUsername($username){
+    $con = getConnection();
+    $username = mysqli_real_escape_string($con, $username);
+    
+    $sql = "SELECT * FROM users WHERE username='$username'";
+    $result = mysqli_query($con, $sql);
+    
+    if($result && mysqli_num_rows($result) == 1) {
+        $user = mysqli_fetch_assoc($result);
+        return $user;
+    }
+    return false;
+}
+    
+
 ?>
