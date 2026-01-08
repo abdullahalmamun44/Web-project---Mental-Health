@@ -9,13 +9,10 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
 $username = $_COOKIE['username'] ?? '';
 
 require_once('../models/usermodel.php');
-$con = getConnection();
-$sql = "SELECT * FROM users WHERE username='$username'";
-$result = mysqli_query($con, $sql);
 
-if(mysqli_num_rows($result) == 1) {
-    $userData = mysqli_fetch_assoc($result);
-} else {
+
+$userData = getUserByUsername($username);
+if(!$userData){
     header('location: userlogin.php');
     exit();
 }
@@ -300,6 +297,7 @@ if(mysqli_num_rows($result) == 1) {
                 <a href="editprofile.php" class="btn btn-edit">✏️ Edit Profile</a>
                 <a href="dashboard.php" class="btn btn-back">← Back to Dashboard</a>
                 <a href="../controllers/logout.php" class="btn btn-back">Logout</a>
+                <br>
             </div>
         </div>
     </div>

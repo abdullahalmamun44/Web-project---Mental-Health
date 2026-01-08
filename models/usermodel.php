@@ -42,6 +42,7 @@
         echo "Connection failed";
         return false;
     }
+    
 
     $check_sql = "SELECT * FROM users WHERE username = '{$user['username']}'";
     $check_result = mysqli_query($con, $check_sql);
