@@ -271,6 +271,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
         <a href="profile.php">Profile</a>
         <a href="../controllers/logout.php">Logout</a>
         <a href="../assets/setting.php">Setting</a>
+        
       </div>
     </div>
   </div>

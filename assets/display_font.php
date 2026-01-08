@@ -159,7 +159,6 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       .bottom-nav a:hover {
         color: #007bff;
       }
-
       .bottom-nav a.active {
         color: #4a90e2;
         font-weight: bold;

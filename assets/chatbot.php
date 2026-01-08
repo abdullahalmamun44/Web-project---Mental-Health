@@ -146,6 +146,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
         width: 90%;
       }
 
+      
       .bottom-nav a {
         font-size: 0.9rem;
       }

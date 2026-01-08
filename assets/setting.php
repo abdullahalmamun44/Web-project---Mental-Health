@@ -120,6 +120,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
   </head>
   <body>
     <header>
+      
       <h1>Nirvoy</h1>
       <div class="language-select">
         <label for="language">Select Language:</label>

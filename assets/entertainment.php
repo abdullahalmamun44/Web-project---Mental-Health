@@ -169,6 +169,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       color: #4a90e2;
       font-weight: bold;
     }
+    
   </style>
 </head>
 <body>

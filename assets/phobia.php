@@ -172,6 +172,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       }
     </style>
   </head>
+  
   <body>
     <div class="top-bar">
       Phobias and How to Cope

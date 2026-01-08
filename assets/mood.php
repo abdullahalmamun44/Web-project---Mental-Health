@@ -77,6 +77,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       text-align: center;
     }
+    
 
     .section h2 {
       margin-bottom: 0.5rem;
