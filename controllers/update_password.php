@@ -24,6 +24,7 @@ if(isset($_POST['submit']) == true) {
     
     if(strlen($new_password) < 6) {
         header('location: ../views/reset_password.php');
+        
         exit();
     }
     $success = updatePassword($username, $new_password);
