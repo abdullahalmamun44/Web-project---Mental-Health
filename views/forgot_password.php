@@ -1,5 +1,6 @@
 <html>
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NIRVOY Forgot Password</title>
@@ -108,8 +109,6 @@
       cursor: pointer;
       font-size: 14px;
     }
-    
-    /* Message styles */
     .message {
       padding: 0.5rem;
       margin-bottom: 1rem;

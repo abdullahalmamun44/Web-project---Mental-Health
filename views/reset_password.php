@@ -160,6 +160,7 @@ if(!isset($_SESSION['reset_user'])) {
         <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm password" required />
       </div>
       
+      
       <button type="submit" name="submit" class="update-btn">Update Password</button>
       
       <a href="userlogin.php" class="cancel-link">← Back to Login Page</a>

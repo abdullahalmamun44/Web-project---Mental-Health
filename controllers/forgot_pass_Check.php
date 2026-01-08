@@ -1,7 +1,9 @@
 <?php
 require_once('../models/usermodel.php');
 
+
 if(isset($_POST['submit']) == true) {
+    
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
 
