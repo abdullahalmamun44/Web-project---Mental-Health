@@ -42,13 +42,6 @@
         echo "Connection failed";
         return false;
     }
-    
-    /*$result = mysqli_query($con, "SHOW TABLES");
-    echo "Available tables: ";
-    while($row = mysqli_fetch_array($result)) {
-        echo $row[0] . ", ";
-    }
-    echo "<br>";*/
 
     $check_sql = "SELECT * FROM users WHERE username = '{$user['username']}'";
     $check_result = mysqli_query($con, $check_sql);

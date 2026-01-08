@@ -264,6 +264,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       <a href="mood.php">Mood</a>
       <a href="consulting.php">Consulting</a>
       <a href="setting.php" class="active">Setting</a>
+      
     </div>
 
     <script>

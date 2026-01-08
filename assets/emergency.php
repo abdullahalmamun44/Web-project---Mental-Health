@@ -150,6 +150,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
     .action-buttons button:hover { transform: scale(1.05); }
   </style>
 </head>
+
 <body>
  
   <header>
