@@ -1,16 +1,17 @@
 <?php
-if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
-    header('location: ../views/userlogin.php');
-    exit();
+if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
+  header('location: ../views/userlogin.php');
+  exit();
 }
 ?>
 
 
 
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NIRVOY Dashboard</title>
   <style>
     body {
@@ -27,6 +28,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       flex-wrap: wrap;
       position: relative;
     }
+
     .icon-block {
       text-align: center;
       width: 80px;
@@ -34,17 +36,20 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       cursor: pointer;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
+
     .icon-block img {
       width: 50px;
       height: 50px;
       object-fit: contain;
       margin-bottom: 0.5rem;
     }
+
     .icon-block span {
       display: block;
       font-size: 0.9rem;
       color: #333;
     }
+
     .icon-block:hover {
       transform: scale(1.1);
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
@@ -57,6 +62,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       top: 10px;
       right: 10px;
     }
+
     .dot-btn {
       background: none;
       border: none;
@@ -64,28 +70,33 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       cursor: pointer;
       padding: 5px;
     }
+
     .dropdown-content {
       display: none;
       position: absolute;
       right: 0;
       background: white;
       min-width: 120px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       border-radius: 5px;
       z-index: 1000;
     }
+
     .dropdown-content a {
       display: block;
       padding: 10px;
       text-decoration: none;
       color: #333;
     }
+
     .dropdown-content a:hover {
       background: #f0f0f0;
     }
+
     .show {
       display: block;
     }
+
     .top-icons {
       display: flex;
       justify-content: space-around;
@@ -94,6 +105,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       flex-wrap: wrap;
       position: relative;
     }
+
     .icon-block {
       text-align: center;
       width: 80px;
@@ -101,17 +113,20 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       cursor: pointer;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
+
     .icon-block img {
       width: 50px;
       height: 50px;
       object-fit: contain;
       margin-bottom: 0.5rem;
     }
+
     .icon-block span {
       display: block;
       font-size: 0.9rem;
       color: #333;
     }
+
     .icon-block:hover {
       transform: scale(1.1);
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
@@ -124,6 +139,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       top: 10px;
       right: 10px;
     }
+
     .dot-btn {
       background: none;
       border: none;
@@ -131,25 +147,29 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       cursor: pointer;
       padding: 5px;
     }
+
     .dropdown-content {
       display: none;
       position: absolute;
       right: 0;
       background: white;
       min-width: 120px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       border-radius: 5px;
       z-index: 1000;
     }
+
     .dropdown-content a {
       display: block;
       padding: 10px;
       text-decoration: none;
       color: #333;
     }
+
     .dropdown-content a:hover {
       background: #f0f0f0;
     }
+
     .show {
       display: block;
     }
@@ -162,10 +182,12 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       text-align: center;
     }
+
     .banner h2 {
       margin: 0.5rem 0;
       color: #222;
     }
+
     .banner img {
       width: 400px;
       max-width: 90%;
@@ -174,6 +196,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       margin: 1rem 0;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
+
     .banner p {
       margin: 0.3rem 0;
       color: #555;
@@ -186,11 +209,13 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       margin: 1.5rem 0;
       flex-direction: column;
     }
+
     .emergency-button img {
       width: 100px;
       height: auto;
       margin-bottom: 0.5rem;
     }
+
     .emergency-button button {
       background: red;
       color: white;
@@ -202,6 +227,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
       transition: background 0.3s ease, transform 0.2s ease;
     }
+
     .emergency-button button:hover {
       background: darkred;
       transform: scale(1.05);
@@ -218,6 +244,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
       border-top: 1px solid #ddd;
     }
+
     .bottom-nav a {
       text-align: center;
       font-size: 1rem;
@@ -225,15 +252,18 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       text-decoration: none;
       transition: color 0.2s ease;
     }
+
     .bottom-nav a:hover {
       color: #007bff;
     }
+
     .bottom-nav a.active {
       color: #4a90e2;
       font-weight: bold;
     }
   </style>
 </head>
+
 <body>
   <div class="top-icons">
     <div class="icon-block">
@@ -252,7 +282,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
 
     <div class="icon-block">
       <a href="../assets/Entertainment.php">
-        <img src="../assets/image/tools.jpg" />
+        <img src="../assets/image/tools.jpg" /><br>
         <span>Entertainment</span>
       </a>
     </div>
@@ -264,7 +294,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       </a>
     </div>
 
-    
+
     <div class="three-dot-menu">
       <button class="dot-btn">⋮</button>
       <div class="dropdown-content">
@@ -281,11 +311,12 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
     <p>Sahyog The Helping Hand</p>
   </div>
 
-    <div class="emergency-button">
-      <button><a href="../assets/emergency.php">Emergency Button</a></button>
+
+  <div class="emergency-button">
+    <button><a href="../assets/emergency.php">Emergency Button</a></button>
 
 
-    </div>
+  </div>
 
   <div class="bottom-nav">
     <a href="dashboard.php" class="active">Dashboard</a>
@@ -295,11 +326,11 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
   </div>
 
   <script>
-    document.querySelector('.dot-btn').addEventListener('click', function() {
+    document.querySelector('.dot-btn').addEventListener('click', function () {
       document.querySelector('.dropdown-content').classList.toggle('show');
     });
 
-    window.addEventListener('click', function(e) {
+    window.addEventListener('click', function (e) {
       if (!e.target.matches('.dot-btn')) {
         const dropdown = document.querySelector('.dropdown-content');
         if (dropdown.classList.contains('show')) {
@@ -309,4 +340,5 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
     });
   </script>
 </body>
+
 </html>
