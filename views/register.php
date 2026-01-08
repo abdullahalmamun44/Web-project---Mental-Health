@@ -179,6 +179,7 @@
             };
             xhr.send('username='+username);
         }
+        
     </script>
 
 </body>
