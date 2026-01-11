@@ -16,6 +16,7 @@ if(isset($_POST['username'])){
     } else {
         echo 'username taken';
     }
+    
 }else{
     ob_clean();
    

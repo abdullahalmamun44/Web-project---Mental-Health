@@ -1,6 +1,7 @@
 <?php
     require_once('../models/usermodel.php');
     if(isset($_POST['submit'])==true) {
+        
     session_start();
     $username=$_POST['username'];
     $password=$_POST['password'];

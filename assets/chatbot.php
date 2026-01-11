@@ -182,6 +182,7 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
         width: 90%;
       }
 
+      
       .bottom-nav a {
         font-size: 0.9rem;
       }
@@ -196,7 +197,9 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     <div class="three-dot-menu">
       <button class="dot-btn">⋮</button>
       <div class="dropdown-content">
-        <a href="../controllers/logout.php">Logout</a>
+        <a href="profile.php">Profile</a>
+        <a href="appointment.php">Book your Appointment</a>
+       <a href="../controllers/logout.php">Logout</a>
       </div>
     </div>
   </header>
@@ -211,7 +214,7 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     <h2>Chatbot Interaction</h2>
     <div class="section">
       <a href="https://www.chatbot.com/">
-        <img src="../assets/image/chatbot 1.webp" alt="Chatbot Interaction" />
+        <img src="../assets/image/chatbot 1.webp" alt="Chatbot Interaction" /><br>
         <span></span>
       </a>
     </div>
@@ -243,7 +246,7 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       document.querySelector('.dropdown-content').classList.toggle('show');
     });
 
-    window.addEventListener('click', function(e) {
+    window.addEventListener('click', function (e) {
       if (!e.target.matches('.dot-btn')) {
         const dropdown = document.querySelector('.dropdown-content');
         if (dropdown.classList.contains('show')) {

@@ -132,8 +132,6 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
       border-radius: 10px;
     }
-
-    /* Three-dot menu */
     .three-dot-menu {
       position: absolute;
       top: 10px;
@@ -282,7 +280,7 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
 
     <div class="icon-block">
       <a href="../assets/Entertainment.php">
-        <img src="../assets/image/tools.jpg" />
+        <img src="../assets/image/tools.jpg" /><br>
         <span>Entertainment</span>
       </a>
     </div>
@@ -300,6 +298,9 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       <div class="dropdown-content">
         <a href="profile.php">Profile</a>
         <a href="../controllers/logout.php">Logout</a>
+        <a href="appointment.php">Book your Appointment</a>
+        <a href="../assets/setting.php">Setting</a>
+        
       </div>
     </div>
   </div>
@@ -324,11 +325,11 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
   </div>
 
   <script>
-    document.querySelector('.dot-btn').addEventListener('click', function() {
+    document.querySelector('.dot-btn').addEventListener('click', function () {
       document.querySelector('.dropdown-content').classList.toggle('show');
     });
 
-    window.addEventListener('click', function(e) {
+    window.addEventListener('click', function (e) {
       if (!e.target.matches('.dot-btn')) {
         const dropdown = document.querySelector('.dropdown-content');
         if (dropdown.classList.contains('show')) {

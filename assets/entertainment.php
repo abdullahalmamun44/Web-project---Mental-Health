@@ -205,6 +205,7 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       color: #4a90e2;
       font-weight: bold;
     }
+    
   </style>
 </head>
 
@@ -216,7 +217,9 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     <div class="three-dot-menu">
       <button class="dot-btn">⋮</button>
       <div class="dropdown-content">
-        <a href="../controllers/logout.php">Logout</a>
+        <a href="profile.php">Profile</a>
+        <a href="appointment.php">Book your Appointment</a>
+      <a href="../controllers/logout.php">Logout</a>
       </div>
     </div>
   </header>
@@ -246,7 +249,7 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     <div class="tile">
       <a href="https://play.google.com/store/apps/details?id=com.mojang.minecraftpe&hl=en&pli=1" target="_blank">
         <img src="../assets/image/entertainment 4.jpg" />
-        <span>Minecraft</span>
+        <span>Minecraft</span><br>
       </a>
     </div>
 
@@ -294,7 +297,7 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       document.querySelector('.dropdown-content').classList.toggle('show');
     });
 
-    window.addEventListener('click', function(e) {
+    window.addEventListener('click', function (e) {
       if (!e.target.matches('.dot-btn')) {
         const dropdown = document.querySelector('.dropdown-content');
         if (dropdown.classList.contains('show')) {

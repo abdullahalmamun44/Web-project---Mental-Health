@@ -189,6 +189,9 @@
     <div class="three-dot-menu">
       <button class="dot-btn">⋮</button>
       <div class="dropdown-content">
+        <a href="profile.php">Profile</a>
+        
+        <a href="appointment.php">Book your Appointment</a>
         <a href="../controllers/logout.php">Logout</a>
       </div>
     </div>

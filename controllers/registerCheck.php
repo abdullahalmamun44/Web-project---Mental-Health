@@ -32,7 +32,6 @@ if(isset($_POST['submit']) == true){
                 header('location: ../views/userlogin.php');
             }else{
                 header('location: ../views/register.php');
-
             }
                     }
     }else{

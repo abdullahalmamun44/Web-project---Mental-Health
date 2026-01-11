@@ -113,6 +113,7 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       text-align: center;
     }
+    
 
     .section h2 {
       margin-bottom: 0.5rem;
@@ -190,6 +191,8 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     <div class="three-dot-menu">
       <button class="dot-btn">⋮</button>
       <div class="dropdown-content">
+        <a href="profile.php">Profile</a>
+        <a href="appointment.php">Book your Appointment</a>
         <a href="../controllers/logout.php">Logout</a>
       </div>
     </div>
@@ -201,7 +204,8 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     <p>Understanding emotional fluctuations and mental health conditions that affect mood stability.</p>
 
     <div class="mood disorderd">
-      <a href="https://my.clevelandclinic.org/health/diseases/17843-mood-disorders" target="_blank">Mood Swings Cleveland Clinic</a>
+      <a href="https://my.clevelandclinic.org/health/diseases/17843-mood-disorders" target="_blank">Mood Swings
+        Cleveland Clinic</a>
     </div>
   </div>
 
@@ -211,7 +215,8 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     <p>Try these fun and effective ways to lift your mood!</p>
 
     <div class="mood disorderd">
-      <a href="https://my.clevelandclinic.org/health/diseases/17843-mood-disorders" target="_blank">Mood Swings Cleveland Clinic</a>
+      <a href="https://my.clevelandclinic.org/health/diseases/17843-mood-disorders" target="_blank">Mood Swings
+        Cleveland Clinic</a>
     </div>
   </div>
 
@@ -221,13 +226,15 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     <p>Track your heart rate to monitor emotional and physical well-being.</p>
 
     <div class="mood disorderd">
-      <a href="https://my.clevelandclinic.org/health/diagnostics/heart-rate" target="_blank">Mood Swings Cleveland Clinic</a>
+      <a href="https://my.clevelandclinic.org/health/diagnostics/heart-rate" target="_blank">Mood Swings Cleveland
+        Clinic</a>
     </div>
   </div>
 
   <div class="section links">
     <h3>Helpful Resources</h3>
-    <a href="https://my.clevelandclinic.org/health/symptoms/mood-swings" target="_blank">Mood Swings Cleveland Clinic</a>
+    <a href="https://my.clevelandclinic.org/health/symptoms/mood-swings" target="_blank">Mood Swings Cleveland
+      Clinic</a>
     <a href="https://www.fcps.edu/student-wellness-tips/lift-your-mood" target="_blank">Lift Your Mood FCPS</a>
   </div>
 
@@ -256,7 +263,7 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       document.querySelector('.dropdown-content').classList.toggle('show');
     });
 
-    window.addEventListener('click', function(e) {
+    window.addEventListener('click', function (e) {
       if (!e.target.matches('.dot-btn')) {
         const dropdown = document.querySelector('.dropdown-content');
         if (dropdown.classList.contains('show')) {

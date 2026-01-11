@@ -162,23 +162,26 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
         document.documentElement.style.setProperty('font-family', savedFont, 'important');
         document.write(`<style>body, button, select, input, textarea { font-family: ${savedFont} !important; }</style>`);
       }
-    })();
-  </script>
+    </style>
+  </head>
+  <body>
+    <header>
+      
+      <h1>Nirvoy</h1>
+      <div class="language-select">
+        <label for="language">Select Language:</label>
+        <select id="language">
+          <option value="en">English</option>
+          <option value="bn">Bangla</option>
+        </select>
+      </div>
+      <button id="voiceToggle">Voice: Off</button>
 
-  <header>
-    <h1>Nirvoy</h1>
-    <div class="language-select">
-      <label for="language">Select Language:</label>
-      <select id="language">
-        <option value="en">English</option>
-        <option value="bn">Bangla</option>
-      </select>
-    </div>
-    <button id="voiceToggle">Voice: Off</button>
-
-    <div class="three-dot-menu">
-      <button class="dot-btn">⋮</button>
-      <div class="dropdown-content">
+      <div class="three-dot-menu">
+        <button class="dot-btn">⋮</button>
+        <div class="dropdown-content">
+        <a href="profile.php">Profile</a>
+        <a href="appointment.php">Book your Appointment</a>
         <a href="../controllers/logout.php">Logout</a>
       </div>
     </div>

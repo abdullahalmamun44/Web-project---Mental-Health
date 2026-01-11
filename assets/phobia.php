@@ -201,21 +201,19 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       .section img {
         width: 90%;
       }
-
-      .bottom-nav a {
-        font-size: 0.9rem;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="top-bar">
-    Phobias and How to Cope
-    <div class="three-dot-menu">
-      <button class="dot-btn">⋮</button>
-      <div class="dropdown-content">
-        <a href="../controllers/logout.php">Logout</a>
+    </style>
+  </head>
+  
+  <body>
+    <div class="top-bar">
+      Phobias and How to Cope
+      <div class="three-dot-menu">
+        <button class="dot-btn">⋮</button>
+        <div class="dropdown-content">
+        <a href="profile.php">Profile</a>
+        <a href="appointment.php">Book your Appointment</a>
+            <a href="../controllers/logout.php">Logout</a>
+        </div>
       </div>
     </div>
   </div>

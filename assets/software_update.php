@@ -330,10 +330,82 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
           alert("Download started...");
         });
       }
+    </style>
+  </head>
+  <body>
+    <div class="top-bar">
+      Software Update
+      <div class="three-dot-menu">
+        <button class="dot-btn">⋮</button>
+        <div class="dropdown-content">
+        <a href="profile.php">Profile</a>
+          <a href="../controllers/logout.php">Logout</a>
+        </div>
+      </div>
+    </div>
 
-      document.querySelector('.dot-btn').addEventListener('click', function() {
-        document.querySelector('.dropdown-content').classList.toggle('show');
-      });
+    <div class="page-wrapper">
+      <div class="card">
+        <div class="card-title">NIRVOY App</div>
+        <div class="card-subtitle">
+          Keep your mental health tools secure and up to date.
+        </div>
+
+        <div class="info-row">
+          <span class="info-label">Current version:</span> 1.0.0
+        </div>
+        <div class="info-row">
+          <span class="info-label">Latest version:</span> 1.1.0
+        </div>
+        <div class="info-row">
+          <span class="info-label">Update size:</span> 25 MB
+        </div>
+
+        <div class="update-avail update-avail2">Update available</div>
+
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+        <div class="progress-text">Downloading… 45%</div>
+
+        <div class="button-row">
+          <button class="btn btn-primary">Download & Install</button>
+          <button class="btn btn-secondary">Later</button>
+        </div>
+
+        <div class="note">
+          Tip: Connect to Wi‑Fi and keep your device charged while updating.
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <a href="../views/dashboard.php">Dashboard</a>
+      <a href="mood.php">Mood</a>
+      <a href="consulting.php">Consulting</a>
+      <a href="setting.php" class="active">Setting</a>
+      
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const laterBtn = document.querySelector(".btn-secondary");
+        if (laterBtn) {
+          laterBtn.addEventListener("click", function () {
+            window.location.href = "setting.html";
+          });
+        }
+
+        const downloadBtn = document.querySelector(".btn-primary");
+        if (downloadBtn) {
+          downloadBtn.addEventListener("click", function () {
+            alert("Download started...");
+          });
+        }
+
+        document.querySelector('.dot-btn').addEventListener('click', function() {
+          document.querySelector('.dropdown-content').classList.toggle('show');
+        });
 
       window.addEventListener('click', function(e) {
         if (!e.target.matches('.dot-btn')) {
