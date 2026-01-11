@@ -83,13 +83,6 @@ if (isset($_POST['action'])) {
         mysqli_stmt_execute($stmt);
     }
 
-    if ($act === 'update' && $username && $password) {
-        $hashed = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = mysqli_prepare($con, "UPDATE users SET password=? WHERE username=?");
-        mysqli_stmt_bind_param($stmt, "ss", $hashed, $username);
-        mysqli_stmt_execute($stmt);
-    }
-
     if ($act === 'delete' && $username) {
         $stmt = mysqli_prepare($con, "DELETE FROM users WHERE username=?");
         mysqli_stmt_bind_param($stmt, "s", $username);
@@ -170,10 +163,9 @@ mysqli_close($con);
             <input type="text" name="username" placeholder="Username" required />
             <input type="password" name="password" placeholder="Password" />
             <button type="submit" name="action" value="add">Add User</button>
-            <button type="submit" name="action" value="update">Update Password</button>
             <button type="submit" name="action" value="delete">Delete User</button>
-        </form>
-        <h3>Current Users</h3>
+        </form><br>
+        <h3><a href="dashboard.php">Dashboard</a></h3>
         <ul>
 
 
