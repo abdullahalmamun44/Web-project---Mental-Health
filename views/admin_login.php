@@ -164,8 +164,8 @@ mysqli_close($con);
             <input type="password" name="password" placeholder="Password" />
             <button type="submit" name="action" value="add">Add User</button>
             <button type="submit" name="action" value="delete">Delete User</button>
-        </form>
-        <h3>Current Users</h3>
+        </form><br>
+        <h3><a href="dashboard.php">Dashboard</a></h3>
         <ul>
 
 
