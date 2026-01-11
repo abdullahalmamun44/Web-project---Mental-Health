@@ -132,8 +132,6 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
       border-radius: 10px;
     }
-
-    /* Three-dot menu */
     .three-dot-menu {
       position: absolute;
       top: 10px;
@@ -300,6 +298,7 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       <div class="dropdown-content">
         <a href="profile.php">Profile</a>
         <a href="../controllers/logout.php">Logout</a>
+        <a href="appointment.php">Therapist Appointment</a>
         <a href="../assets/setting.php">Setting</a>
         
       </div>
