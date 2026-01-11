@@ -1,15 +1,16 @@
 <?php
-if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
-    header('location: ../views/userlogin.php');
-    exit();
+if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
+  header('location: ../views/userlogin.php');
+  exit();
 }
 ?>
 <!DOCTYPE !DOCTYPE html>
 <html lang="en">
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NIRVOY Entertainment</title>
   <style>
     body {
@@ -25,18 +26,18 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: relative; 
+      position: relative;
     }
 
     header .title {
       font-size: 1.2rem;
       font-weight: bold;
-      position: absolute; 
+      position: absolute;
       left: 50%;
       transform: translateX(-50%);
     }
 
-  
+
     .three-dot-menu {
       position: absolute;
       top: 10px;
@@ -57,7 +58,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       right: 0;
       background: white;
       min-width: 140px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       border-radius: 5px;
       z-index: 1000;
     }
@@ -87,7 +88,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
     .tile {
       background: white;
       border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
       text-align: center;
       padding: 0.5rem;
       cursor: pointer;
@@ -132,7 +133,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       border-radius: 50px;
       font-size: 1rem;
       cursor: pointer;
-      box-shadow: 0 0 10px rgba(255,0,0,0.4);
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
       transition: background 0.3s ease, transform 0.2s ease;
     }
 
@@ -149,7 +150,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       display: flex;
       justify-content: space-around;
       padding: 1rem 0;
-      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
       border-top: 1px solid #ddd;
     }
 
@@ -172,6 +173,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
     
   </style>
 </head>
+
 <body>
 
   <header>
@@ -212,7 +214,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
     <div class="tile">
       <a href="https://play.google.com/store/apps/details?id=com.mojang.minecraftpe&hl=en&pli=1" target="_blank">
         <img src="../assets/image/entertainment 4.jpg" />
-        <span>Minecraft</span>
+        <span>Minecraft</span><br>
       </a>
     </div>
 
@@ -244,11 +246,11 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
 
   <script>
 
-    document.querySelector('.dot-btn').addEventListener('click', function() {
+    document.querySelector('.dot-btn').addEventListener('click', function () {
       document.querySelector('.dropdown-content').classList.toggle('show');
     });
 
-    window.addEventListener('click', function(e) {
+    window.addEventListener('click', function (e) {
       if (!e.target.matches('.dot-btn')) {
         const dropdown = document.querySelector('.dropdown-content');
         if (dropdown.classList.contains('show')) {
@@ -259,4 +261,5 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
   </script>
 
 </body>
+
 </html>
