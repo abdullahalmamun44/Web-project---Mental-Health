@@ -1,25 +1,26 @@
 <html>
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NIRVOY User Login</title>
-  
+
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: #f0f4f8;
       display: flex;
-      justify-content: center;   
-      align-items: center;      
-      height: 100vh;             
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
 
     .login-container {
       background: white;
       padding: 2rem;
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
       width: 320px;
       text-align: center;
       position: relative;
@@ -96,23 +97,25 @@
       font-size: 1.2rem;
       cursor: pointer;
     }
+
     .back-btn {
-            position: fixed;
-            top: 15px;
-            left: 15px;
-            background: #6c757d;
-            color: white;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-        }
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background: #6c757d;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
   </style>
 </head>
+
 <body>
-  
-    
+
+
   <div class="login-container">
     <div class="logo">
       <span class="icon"></span>
@@ -122,11 +125,11 @@
     <form action="../controllers/loginCheck.php" method="post" enctype="" id="loginForm">
       <div class="input-group">
         <label for="username">👤</label>
-        <input type="text" name="username" id="username"  placeholder="Enter Your username" required />
+        <input type="text" name="username" id="username" placeholder="Enter Your username" required />
       </div>
       <div class="input-group">
         <label for="password">🔒</label>
-        <input type="password"  name="password" id="password"  placeholder="Enter Your Password" required />
+        <input type="password" name="password" id="password" placeholder="Enter Your Password" required />
       </div>
       <button type="submit" name="submit" class="login-btn">Log in</button>
       <a href="forgot_password.php" class="forgot-link">Forgot password?</a>
@@ -136,4 +139,5 @@
     </form>
   </div>
 </body>
+
 </html>
