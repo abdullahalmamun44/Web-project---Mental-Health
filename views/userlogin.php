@@ -121,11 +121,11 @@
     <h2>User Login</h2>
     <form action="../controllers/loginCheck.php" method="post" enctype="" id="loginForm">
       <div class="input-group">
-        <label for="username"></label>
+        <label for="username">👤</label>
         <input type="text" name="username" id="username"  placeholder="Enter Your username" required />
       </div>
       <div class="input-group">
-        <label for="password"></label>
+        <label for="password">🔒</label>
         <input type="password"  name="password" id="password"  placeholder="Enter Your Password" required />
       </div>
       <button type="submit" name="submit" class="login-btn">Log in</button>

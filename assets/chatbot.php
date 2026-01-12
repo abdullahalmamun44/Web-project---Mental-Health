@@ -1,14 +1,15 @@
 <?php
-if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
-    header('location: ../views/userlogin.php');
-    exit();
+if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
+  header('location: ../views/userlogin.php');
+  exit();
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NIRVOY Chatbot Benefits</title>
   <link rel="stylesheet" href="style.css" />
   <style>
@@ -18,6 +19,41 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       background: #f0f4f8;
     }
 
+    /* Dark Mode Overrides */
+    body.dark-mode {
+      background: #121212;
+      color: #e0e0e0;
+    }
+
+    body.dark-mode .card,
+    body.dark-mode .bottom-nav,
+    body.dark-mode .dropdown-content {
+      background: #1e1e1e;
+      border-color: #333;
+      color: #fff;
+    }
+
+    body.dark-mode .preview-box {
+      background: #252525;
+      border-color: #444;
+      color: #fff;
+    }
+
+    body.dark-mode .bottom-nav a,
+    body.dark-mode .dropdown-content a,
+    body.dark-mode .row label {
+      color: #bbb;
+    }
+
+    body.dark-mode .small-note {
+      color: #888;
+    }
+
+    body.dark-mode .top-bar {
+      background: #1a73e8;
+      /* Slightly darker blue for dark mode header */
+    }
+
     header {
       background: #4a90e2;
       color: white;
@@ -25,10 +61,10 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       text-align: center;
       font-size: 1.3rem;
       font-weight: bold;
-      position: relative; 
+      position: relative;
     }
 
-   
+
     .three-dot-menu {
       position: absolute;
       top: 10px;
@@ -49,7 +85,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       right: 0;
       background: white;
       min-width: 140px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       border-radius: 5px;
       z-index: 1000;
     }
@@ -74,7 +110,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       padding: 1rem;
       background: white;
       border-radius: 12px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
       text-align: center;
     }
 
@@ -88,7 +124,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       max-width: 400px;
       margin: 0.5rem auto;
       border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     }
 
     .chatbox {
@@ -120,7 +156,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       display: flex;
       justify-content: space-around;
       padding: 1rem 0;
-      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
       border-top: 1px solid #ddd;
     }
 
@@ -153,14 +189,16 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
     }
   </style>
 </head>
+
 <body>
   <header>
     Benefits of Chatbots for Mental Health
-   
+
     <div class="three-dot-menu">
       <button class="dot-btn">⋮</button>
       <div class="dropdown-content">
         <a href="profile.php">Profile</a>
+        <a href="appointment.php">Book your Appointment</a>
        <a href="../controllers/logout.php">Logout</a>
       </div>
     </div>
@@ -176,7 +214,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
     <h2>Chatbot Interaction</h2>
     <div class="section">
       <a href="https://www.chatbot.com/">
-        <img src="../assets/image/chatbot 1.webp" alt="Chatbot Interaction" />
+        <img src="../assets/image/chatbot 1.webp" alt="Chatbot Interaction" /><br>
         <span></span>
       </a>
     </div>
@@ -191,12 +229,24 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
   </div>
 
   <script>
-  
+    function syncSettings() {
+      const savedFont = localStorage.getItem("nirvoyFont");
+      if (savedFont) {
+        document.body.style.fontFamily = savedFont;
+      }
+      const savedTheme = localStorage.getItem("nirvoyTheme");
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.remove('dark-mode');
+      }
+    }
+    syncSettings();
     document.querySelector('.dot-btn').addEventListener('click', function() {
       document.querySelector('.dropdown-content').classList.toggle('show');
     });
 
-    window.addEventListener('click', function(e) {
+    window.addEventListener('click', function (e) {
       if (!e.target.matches('.dot-btn')) {
         const dropdown = document.querySelector('.dropdown-content');
         if (dropdown.classList.contains('show')) {
@@ -206,4 +256,5 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
     });
   </script>
 </body>
+
 </html>
