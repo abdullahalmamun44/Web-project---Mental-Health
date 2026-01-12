@@ -4,7 +4,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
     exit();
 }
 ?>
-<!DOCTYPE !DOCTYPE html>
+<!DOCTYPE !DOCTYPE html>    
 <html lang="en">
 <html lang="en">
 <head>
@@ -180,7 +180,7 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
     <a href="mood.php"> Mood</a>
     <a href="consulting.php" class="active"> Consulting</a>
     <a href="setting.php"> Setting</a>
-  </div>
+  </div><br>
 
   <script>
 
