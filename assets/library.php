@@ -234,7 +234,7 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
         }
       }
     });
-  </script>
+  </script><br>
 </body>
 
 </html>
