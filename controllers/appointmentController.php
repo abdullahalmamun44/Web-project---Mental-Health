@@ -5,7 +5,7 @@ require_once('../models/usermodel.php');
 
 session_start();
 
-if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
+if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     header('location: ../views/userlogin.php');
     exit();
 }
@@ -13,52 +13,52 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
 $username = $_COOKIE['username'] ?? '';
 $userData = getUserByUsername($username);
 
-if(!$userData) {
+if (!$userData) {
     header('location: ../views/userlogin.php');
     exit();
 }
 
 $allTherapists = getAllTherapists();
 
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
     $appointment_date = $_POST['appointment_date'];
     $appointment_time = $_POST['appointment_time'];
     $service_type = $_POST['service_type'];
     $therapist_id = $_POST['therapist_id'];
     $reason = $_POST['reason'] ?? '';
-    
-    if(empty($appointment_date) || empty($appointment_time) || empty($service_type)) {
+
+    if (empty($appointment_date) || empty($appointment_time) || empty($service_type)) {
         $error = "All required fields must be filled";
         header("location: ../views/appointment.php?error=" . urlencode($error));
         exit();
     }
-    
+
     $today = date('Y-m-d');
-    if($appointment_date < $today) {
+    if ($appointment_date < $today) {
         $error = "Appointment date cannot be in the past";
         header("location: ../views/appointment.php?error=" . urlencode($error));
         exit();
     }
-    
-    if(checkAppointmentConflict($username, $appointment_date, $appointment_time, $therapist_id)) {
+
+    if (checkAppointmentConflict($username, $appointment_date, $appointment_time, $therapist_id)) {
         $error = "This time slot is already booked";
         header("location: ../views/appointment.php?error=" . urlencode($error));
         exit();
     }
-    
+
     $therapist = getTherapistById($therapist_id);
-    if(!$therapist) {
+    if (!$therapist) {
         $error = "Selected therapist not found";
         header("location: ../views/appointment.php?error=" . urlencode($error));
         exit();
     }
-    
-    if(!checkTherapistAvailability($therapist_id, $appointment_date, $appointment_time)) {
+
+    if (!checkTherapistAvailability($therapist_id, $appointment_date, $appointment_time)) {
         $error = "Therapist not available at this time";
         header("location: ../views/appointment.php?error=" . urlencode($error));
         exit();
     }
-    
+
     $appointment = [
         'username' => $username,
         'fullname' => $userData['fullName'] ?? $username,
@@ -70,9 +70,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
         'department' => $therapist['department'],
         'reason' => $reason
     ];
-    
+
     $appointment_id = addAppointment($appointment);
-    if($appointment_id) {
+    if ($appointment_id) {
         $success = "Appointment booked successfully! Appointment ID: #" . $appointment_id;
         header("location: ../views/appointment.php?success=" . urlencode($success));
         exit();
