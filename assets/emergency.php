@@ -229,6 +229,6 @@ if(!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true'){
       }
     });
   </script>
- <br>
+ <br><br>
 </body>
 </html>
