@@ -311,7 +311,6 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     <p>Sahyog The Helping Hand</p>
   </div>
 
-
   <div class="emergency-button">
     <button><a href="../assets/emergency.php">Emergency Button</a></button>
 

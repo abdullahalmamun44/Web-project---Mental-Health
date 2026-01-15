@@ -20,6 +20,41 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       background: #f0f4f8;
     }
 
+    /* Dark Mode Overrides */
+    body.dark-mode {
+      background: #121212;
+      color: #e0e0e0;
+    }
+
+    body.dark-mode .card,
+    body.dark-mode .bottom-nav,
+    body.dark-mode .dropdown-content {
+      background: #1e1e1e;
+      border-color: #333;
+      color: #fff;
+    }
+
+    body.dark-mode .preview-box {
+      background: #252525;
+      border-color: #444;
+      color: #fff;
+    }
+
+    body.dark-mode .bottom-nav a,
+    body.dark-mode .dropdown-content a,
+    body.dark-mode .row label {
+      color: #bbb;
+    }
+
+    body.dark-mode .small-note {
+      color: #888;
+    }
+
+    body.dark-mode .top-bar {
+      background: #1a73e8;
+      /* Slightly darker blue for dark mode header */
+    }
+
     header {
       background: #6a4caf;
       color: white;
@@ -211,8 +246,20 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
   </div>
 
   <script>
-
-    document.querySelector('.dot-btn').addEventListener('click', function () {
+    function syncSettings() {
+      const savedFont = localStorage.getItem("nirvoyFont");
+      if (savedFont) {
+        document.body.style.fontFamily = savedFont;
+      }
+      const savedTheme = localStorage.getItem("nirvoyTheme");
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.remove('dark-mode');
+      }
+    }
+    syncSettings();
+    document.querySelector('.dot-btn').addEventListener('click', function() {
       document.querySelector('.dropdown-content').classList.toggle('show');
     });
 

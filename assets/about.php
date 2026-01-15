@@ -1,8 +1,15 @@
+<?php
+if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
+  header('location: ../views/userlogin.php');
+  exit();
+}
+?>
 
 <html>
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About NIRVOY</title>
   <link rel="stylesheet" href="style.css" />
   <style>
@@ -10,6 +17,41 @@
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: #f0f4f8;
+    }
+
+    /* Dark Mode Overrides */
+    body.dark-mode {
+      background: #121212;
+      color: #e0e0e0;
+    }
+
+    body.dark-mode .card,
+    body.dark-mode .bottom-nav,
+    body.dark-mode .dropdown-content {
+      background: #1e1e1e;
+      border-color: #333;
+      color: #fff;
+    }
+
+    body.dark-mode .preview-box {
+      background: #252525;
+      border-color: #444;
+      color: #fff;
+    }
+
+    body.dark-mode .bottom-nav a,
+    body.dark-mode .dropdown-content a,
+    body.dark-mode .row label {
+      color: #bbb;
+    }
+
+    body.dark-mode .small-note {
+      color: #888;
+    }
+
+    body.dark-mode .top-bar {
+      background: #1a73e8;
+      /* Slightly darker blue for dark mode header */
     }
 
     header {
@@ -42,7 +84,7 @@
       right: 0;
       background: white;
       min-width: 140px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       border-radius: 5px;
       z-index: 1000;
     }
@@ -67,7 +109,7 @@
       padding: 1.5rem;
       background: white;
       border-radius: 12px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
     }
 
     .about-section h2 {
@@ -110,7 +152,7 @@
       display: flex;
       justify-content: space-around;
       padding: 1rem 0;
-      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
       border-top: 1px solid #ddd;
     }
 
@@ -146,10 +188,11 @@
     }
   </style>
 </head>
+
 <body>
   <header>
     About NIRVOY
-   
+
     <div class="three-dot-menu">
       <button class="dot-btn">⋮</button>
       <div class="dropdown-content">
@@ -189,6 +232,20 @@
   </div>
 
   <script>
+    function syncSettings() {
+      const savedFont = localStorage.getItem("nirvoyFont");
+      if (savedFont) {
+        document.body.style.fontFamily = savedFont;
+      }
+
+      const savedTheme = localStorage.getItem("nirvoyTheme");
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.remove('dark-mode');
+      }
+    }
+    syncSettings();
     document.querySelector('.dot-btn').addEventListener('click', function() {
       document.querySelector('.dropdown-content').classList.toggle('show');
     });
@@ -203,4 +260,5 @@
     });
   </script>
 </body>
+
 </html>
