@@ -1,4 +1,5 @@
 <?php
+// Secure session check
 if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
   header('location: ../views/userlogin.php');
   exit();
@@ -9,15 +10,27 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
 
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nirvoy – Display & Font</title>
   <style>
+    /* 1. Global Reset & Base Styles */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
     }
 
+    body {
+      background: #f7f8ff;
+      color: #222;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* 2. Dark Mode Overrides */
     body.dark-mode {
       background: #121212;
       color: #e0e0e0;
@@ -47,33 +60,20 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       color: #888;
     }
 
-    body.dark-mode .top-bar {
-      background: #1a73e8;
-
-    }
-
-    body {
-      background: #f7f8ff;
-      color: #222;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
+    /* 3. Top Navigation Bar */
     .top-bar {
       background: #4285f4;
       color: #fff;
       font-weight: bold;
       text-align: center;
-      padding: 10px 0;
+      padding: 15px 0;
       font-size: 22px;
       position: relative;
     }
 
-
     .three-dot-menu {
       position: absolute;
-      top: 8px;
+      top: 12px;
       right: 15px;
     }
 
@@ -85,22 +85,26 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       color: white;
     }
 
+    /* 4. Dropdown Menu */
     .dropdown-content {
       display: none;
       position: absolute;
       right: 0;
       background: white;
-      min-width: 140px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      border-radius: 5px;
+      min-width: 180px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border-radius: 8px;
       z-index: 1000;
+      overflow: hidden;
     }
 
     .dropdown-content a {
       display: block;
-      padding: 10px;
+      padding: 12px 16px;
       text-decoration: none;
       color: #333;
+      text-align: left;
+      font-size: 14px;
     }
 
     .dropdown-content a:hover {
@@ -108,85 +112,64 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     }
 
     .show {
-      display: block;
+      display: block !important;
     }
 
+    /* 5. Main Content Layout */
     .page-wrapper {
       flex: 1;
-      padding: 30px 40px 80px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-      .bottom-nav a:hover {
-        color: #007bff;
-      }
-      .bottom-nav a.active {
-        color: #4a90e2;
-        font-weight: bold;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="top-bar">
-      Display &amp; Font
-      <div class="three-dot-menu">
-        <button class="dot-btn">⋮</button>
-        <div class="dropdown-content">
-        <a href="profile.php">👤Profile</a>
-        <a href="appointment.php">📅Book your Appointment</a>
-           <a href="../controllers/logout.php">🚪Logout</a>
-        </div>
     .card {
       background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
       width: 100%;
-      max-width: 600px;
-      padding: 20px 22px;
-      margin-bottom: 16px;
+      max-width: 500px;
+      padding: 20px;
+      margin-bottom: 20px;
     }
 
     .card-title {
       font-size: 18px;
       font-weight: bold;
-      margin-bottom: 8px;
+      margin-bottom: 15px;
     }
 
     .row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin: 8px 0;
-      font-size: 14px;
-    }
-
-    .row label {
-      flex: 1;
+      margin-bottom: 15px;
     }
 
     select {
-      margin-left: 10px;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      outline: none;
     }
 
     .preview-box {
-      margin-top: 12px;
-      padding: 12px;
-      border: 1px solid #ddd;
+      margin: 15px 0;
+      padding: 20px;
+      border: 1px dashed #ddd;
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 18px;
       text-align: center;
       background: #f9fafc;
     }
 
     .small-note {
-      margin-top: 6px;
       font-size: 12px;
       color: #777;
     }
 
-    /* Bottom navigation bar */
+    /* 6. Bottom Navigation */
     .bottom-nav {
       position: fixed;
       bottom: 0;
@@ -194,25 +177,19 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       background: #fff;
       display: flex;
       justify-content: space-around;
-      padding: 1rem 0;
+      padding: 15px 0;
       border-top: 1px solid #ddd;
-      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
     }
 
     .bottom-nav a {
-      font-size: 1rem;
-      color: #333;
+      font-size: 0.9rem;
+      color: #555;
       text-decoration: none;
-      text-align: center;
-      transition: color 0.2s;
-    }
-
-    .bottom-nav a:hover {
-      color: #007bff;
     }
 
     .bottom-nav a.active {
-      color: #4a90e2;
+      color: #4285f4;
       font-weight: bold;
     }
   </style>
@@ -222,83 +199,78 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
   <div class="top-bar">
     Display &amp; Font
     <div class="three-dot-menu">
-      <button class="dot-btn">⋮</button>
-      <div class="dropdown-content">
-        <a href="../controllers/logout.php">Logout</a>
+      <button class="dot-btn" id="menuBtn">⋮</button>
+      <div class="dropdown-content" id="dropdownMenu">
+        <a href="profile.php">👤 Profile</a>
+        <a href="appointment.php">📅 Book Appointment</a>
+        <a href="../controllers/logout.php">🚪 Logout</a>
       </div>
     </div>
   </div>
 
   <div class="page-wrapper">
     <div class="card">
-      <div class="card-title">Font style</div>
-
+      <div class="card-title">Font Style</div>
       <div class="row">
         <label for="fontFamily">Choose font</label>
         <select id="fontFamily">
-          <option value="'Arial', sans-serif">Default (Arial)</option>
-          <option value="'Segoe UI', sans-serif">Segoe UI</option>
+          <option value="Arial, sans-serif">Default (Arial)</option>
+          <option value="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Segoe UI</option>
           <option value="'Georgia', serif">Georgia</option>
+          <option value="'Courier New', monospace">Monospace</option>
         </select>
       </div>
-
       <div class="preview-box" id="previewText">
         CARE FOR YOUR MENTAL HEALTH
       </div>
-
-      <div class="small-note">
-        Pick the font that feels easiest for you to read.
-      </div>
+      <div class="small-note">Pick the font that feels easiest for you to read.</div>
     </div>
 
     <div class="card">
       <div class="card-title">Theme</div>
-
       <div class="row">
         <label for="themeSelect">App theme</label>
         <select id="themeSelect">
-          <option value="light">Light</option>
-          <option value="dark">Dark (coming soon....)</option>
+          <option value="light">Light Mode</option>
+          <option value="dark">Dark Mode</option>
         </select>
       </div>
-
-      <div class="small-note">
-        Dark mode option is shown here for future updates; it does not change
-        colors yet.
-      </div>
+      <div class="small-note">Switch to Dark Mode to reduce eye strain at night.</div>
     </div>
   </div>
 
-  <div class="bottom-nav">
+  <nav class="bottom-nav">
     <a href="../views/dashboard.php">Dashboard</a>
     <a href="mood.php">Mood</a>
     <a href="consulting.php">Consulting</a>
     <a href="setting.php" class="active">Setting</a>
-  </div>
+  </nav>
 
   <script>
     const fontSelector = document.getElementById("fontFamily");
     const themeSelector = document.getElementById("themeSelect");
+    const previewBox = document.getElementById("previewText");
+    const menuBtn = document.getElementById("menuBtn");
+    const dropdownMenu = document.getElementById("dropdownMenu");
 
     // --- FONT LOGIC ---
     function updateAppFont(fontName) {
       document.body.style.fontFamily = fontName;
+      if (previewBox) previewBox.style.fontFamily = fontName;
     }
 
     const savedFont = localStorage.getItem("nirvoyFont");
     if (savedFont) {
       updateAppFont(savedFont);
-      if (fontSelector) fontSelector.value = savedFont;
+      fontSelector.value = savedFont;
     }
 
-    if (fontSelector) {
-      fontSelector.addEventListener("change", (e) => {
-        updateAppFont(e.target.value);
-        localStorage.setItem("nirvoyFont", e.target.value);
-      });
-    }
+    fontSelector.addEventListener("change", (e) => {
+      updateAppFont(e.target.value);
+      localStorage.setItem("nirvoyFont", e.target.value);
+    });
 
-    // --- DARK MODE LOGIC ---
+    // --- THEME LOGIC ---
     function applyTheme(theme) {
       if (theme === 'dark') {
         document.body.classList.add('dark-mode');
@@ -310,27 +282,24 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     const savedTheme = localStorage.getItem("nirvoyTheme");
     if (savedTheme) {
       applyTheme(savedTheme);
-      if (themeSelector) themeSelector.value = savedTheme;
+      themeSelector.value = savedTheme;
     }
 
-    if (themeSelector) {
-      themeSelector.addEventListener("change", (e) => {
-        const selectedTheme = e.target.value;
-        applyTheme(selectedTheme);
-        localStorage.setItem("nirvoyTheme", selectedTheme);
-      });
-    }
-
-    document.querySelector('.dot-btn').addEventListener('click', function() {
-      document.querySelector('.dropdown-content').classList.toggle('show');
+    themeSelector.addEventListener("change", (e) => {
+      const selectedTheme = e.target.value;
+      applyTheme(selectedTheme);
+      localStorage.setItem("nirvoyTheme", selectedTheme);
     });
 
-    window.addEventListener('click', function(e) {
-      if (!e.target.matches('.dot-btn')) {
-        const dropdown = document.querySelector('.dropdown-content');
-        if (dropdown && dropdown.classList.contains('show')) {
-          dropdown.classList.remove('show');
-        }
+    // --- DROPDOWN LOGIC ---
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdownMenu.classList.toggle('show');
+    });
+
+    window.addEventListener('click', () => {
+      if (dropdownMenu.classList.contains('show')) {
+        dropdownMenu.classList.remove('show');
       }
     });
   </script>

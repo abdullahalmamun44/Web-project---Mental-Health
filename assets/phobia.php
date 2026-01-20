@@ -9,52 +9,40 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
 
 <head>
   <meta charset="UTF-8" />
-  <title>Nirvoy – Phobia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nirvoy – Phobias</title>
   <style>
+    :root {
+      --bg-color: #f7f8ff;
+      --text-color: #222;
+      --card-bg: #ffffff;
+      --card-shadow: rgba(0, 0, 0, 0.08);
+      --title-color: #3949ab;
+      --border-color: #dddddd;
+      --nav-bg: #ffffff;
+    }
+
+    body.dark-mode {
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+      --card-bg: #1e1e1e;
+      --card-shadow: rgba(0, 0, 0, 0.3);
+      --title-color: #8c9eff;
+      --border-color: #333333;
+      --nav-bg: #1e1e1e;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    /* Dark Mode Overrides */
-    body.dark-mode {
-      background: #121212;
-      color: #e0e0e0;
-    }
-
-    body.dark-mode .card,
-    body.dark-mode .bottom-nav,
-    body.dark-mode .dropdown-content {
-      background: #1e1e1e;
-      border-color: #333;
-      color: #fff;
-    }
-
-    body.dark-mode .preview-box {
-      background: #252525;
-      border-color: #444;
-      color: #fff;
-    }
-
-    body.dark-mode .bottom-nav a,
-    body.dark-mode .dropdown-content a,
-    body.dark-mode .row label {
-      color: #bbb;
-    }
-
-    body.dark-mode .small-note {
-      color: #888;
-    }
-
-    body.dark-mode .top-bar {
-      background: #1a73e8;
-      /* Slightly darker blue for dark mode header */
+      transition: background 0.3s, color 0.3s;
     }
 
     body {
-      background: #f7f8ff;
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-family: Arial, sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -67,9 +55,10 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       text-align: center;
       font-size: 1.3rem;
       font-weight: bold;
-      position: relative;
+      position: sticky;
+      top: 0;
+      z-index: 1001;
     }
-
 
     .three-dot-menu {
       position: absolute;
@@ -89,22 +78,19 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       display: none;
       position: absolute;
       right: 0;
-      background: white;
-      min-width: 140px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      border-radius: 5px;
+      background: var(--card-bg);
+      min-width: 160px;
+      box-shadow: 0 4px 12px var(--card-shadow);
+      border-radius: 8px;
       z-index: 1000;
+      border: 1px solid var(--border-color);
     }
 
     .dropdown-content a {
       display: block;
-      padding: 10px;
+      padding: 12px;
       text-decoration: none;
-      color: #333;
-    }
-
-    .dropdown-content a:hover {
-      background: #f0f0f0;
+      color: var(--text-color);
     }
 
     .show {
@@ -113,153 +99,184 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
 
     .page-wrapper {
       flex: 1;
+      padding: 20px 15px 100px;
       display: flex;
       flex-direction: column;
-      padding: 20px 40px 60px;
+      align-items: center;
     }
 
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 24px;
-      color: #222;
+    .phobia-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px var(--card-shadow);
+      padding: 20px;
+      margin-bottom: 25px;
+      width: 100%;
+      max-width: 600px;
+      border: 1px solid var(--border-color);
     }
 
-    .phobia {
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
-      padding: 16px 18px;
-      margin-bottom: 16px;
+    .phobia-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      gap: 15px;
+    }
+
+    .phobia-img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid var(--title-color);
+    }
+
+    .title-group {
+      text-align: left;
     }
 
     .phobia-title {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: bold;
-      color: #3949ab;
-      margin-bottom: 6px;
-      text-align: center;
+      color: var(--title-color);
     }
 
     .phobia-subtitle {
       font-size: 13px;
       color: #777;
-      margin-bottom: 6px;
-      text-align: center;
+      font-style: italic;
     }
 
     .phobia-text {
       font-size: 14px;
-      color: #333;
-      line-height: 1.4;
+      line-height: 1.6;
+      margin-top: 10px;
     }
 
-    .phobia-name {
+    .label {
       font-weight: bold;
-      color: #222;
-      text-align: center;
+      color: var(--title-color);
     }
 
     .bottom-nav {
       position: fixed;
       bottom: 0;
       width: 100%;
-      background: white;
+      background: var(--nav-bg);
       display: flex;
       justify-content: space-around;
-      padding: 1rem 0;
-      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-      border-top: 1px solid #ddd;
+      padding: 12px 0;
+      border-top: 1px solid var(--border-color);
     }
 
     .bottom-nav a {
-      text-align: center;
-      font-size: 1rem;
-      color: #333;
+      color: var(--text-color);
       text-decoration: none;
-      transition: color 0.2s ease;
+      font-size: 14px;
     }
 
-    .bottom-nav a:hover {
-      color: #007bff;
-    }
-
-    .bottom-nav a.active {
-      color: #4a90e2;
-      font-weight: bold;
-    }
-
-    .images {
-      display: block;
-      margin: 20px auto;
-      max-width: 25%;
-      height: auto;
-      border-radius: 8px;
-    }
-
-    @media (max-width: 600px) {
-      .section img {
-        width: 90%;
+    @media (max-width: 500px) {
+      .phobia-header {
+        flex-direction: column;
+        text-align: center;
       }
-    </style>
-  </head>
-  
-  <body>
-    <div class="top-bar">
-      Phobias and How to Cope
-      <div class="three-dot-menu">
-        <button class="dot-btn">⋮</button>
-        <div class="dropdown-content">
-        <a href="profile.php">👤Profile</a>
-        <a href="appointment.php">📅Book your Appointment</a>
-            <a href="../controllers/logout.php">🚪Logout</a>
-        </div>
+
+      .title-group {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-bar">
+    Common Phobias
+    <div class="three-dot-menu">
+      <button class="dot-btn">⋮</button>
+      <div class="dropdown-content">
+        <a href="profile.php">👤 Profile</a>
+        <a href="appointment.php">📅 Appointment</a>
+        <a href="../controllers/logout.php">🚪 Logout</a>
       </div>
     </div>
   </div>
 
   <div class="page-wrapper">
-    <section class="phobia">
-      <img src="image/Agoraphobia.png" alt="image of Agoraphobia" class="images" />
-      <div class="phobia-title">Agoraphobia</div>
-      <div class="phobia-subtitle">Fear of places where escape feels hard or help may be unavailable.</div>
-      <p class="phobia-text"><span class="phobia-name">What it is:</span> Strong fear of being in crowds, public transport, or open spaces where panic might happen and feel impossible to escape.</p>
-      <p class="phobia-text"><span class="phobia-name">Symptoms & how to avoid problems:</span> People often avoid going out alone, feel trapped, or have panic symptoms like racing heart and dizziness; gradual exposure with support and breathing exercises can slowly reduce this avoidance.</p>
+
+    <section class="phobia-card">
+      <div class="phobia-header">
+        <img src="image/Agoraphobia.png" alt="Agoraphobia" class="phobia-img" />
+        <div class="title-group">
+          <div class="phobia-title">Agoraphobia</div>
+          <div class="phobia-subtitle">Fear of open or crowded spaces.</div>
+        </div>
+      </div>
+      <p class="phobia-text"><span class="label">What it is:</span> Fear of being in situations where escape might be difficult or help wouldn't be available if things go wrong.</p>
+      <p class="phobia-text"><span class="label">Coping:</span> Practice "grounding" techniques and try short, timed visits to public areas with a trusted friend.</p>
+    </section>
+
+    <section class="phobia-card">
+      <div class="phobia-header">
+        <img src="image/ANxiety.png" alt="Social Anxiety" class="phobia-img" />
+        <div class="title-group">
+          <div class="phobia-title">Social Anxiety</div>
+          <div class="phobia-subtitle">Fear of social situations or judgment.</div>
+        </div>
+      </div>
+      <p class="phobia-text"><span class="label">What it is:</span> Intense anxiety about being watched, judged, or embarrassed in front of others during social interactions.</p>
+      <p class="phobia-text"><span class="label">Coping:</span> Challenge "mind-reading" thoughts (assuming others think badly of you) and start with small "hello" interactions.</p>
+    </section>
+
+    <section class="phobia-card">
+      <div class="phobia-header">
+        <img src="image/Arachphobia.png" alt="Arachnophobia" class="phobia-img" />
+        <div class="title-group">
+          <div class="phobia-title">Arachnophobia</div>
+          <div class="phobia-subtitle">Extreme fear of spiders.</div>
+        </div>
+      </div>
+      <p class="phobia-text"><span class="label">What it is:</span> One of the most common phobias, where the sight or even thought of a spider triggers a fight-or-flight response.</p>
+      <p class="phobia-text"><span class="label">Coping:</span> Systematic desensitization—looking at cartoons of spiders, then photos, then videos to lower the brain's alarm response.</p>
+    </section>
+
+    <section class="phobia-card">
+      <div class="phobia-header">
+        <img src="image/acrophobia.png" alt="Acrophobia" class="phobia-img" />
+        <div class="title-group">
+          <div class="phobia-title">Acrophobia</div>
+          <div class="phobia-subtitle">Fear of heights.</div>
+        </div>
+      </div>
+      <p class="phobia-text"><span class="label">What it is:</span> A nervous system reaction to being high up, often causing dizziness, shaking, or a feeling of being pulled toward the edge.</p>
+      <p class="phobia-text"><span class="label">Coping:</span> Cognitive Behavioral Therapy (CBT) helps reframe the sense of danger, and virtual reality (VR) exposure is often very effective.</p>
     </section>
 
   </div>
 
-  <div class="bottom-nav">
+  <nav class="bottom-nav">
     <a href="../views/dashboard.php">Dashboard</a>
     <a href="mood.php">Mood</a>
     <a href="consulting.php">Consulting</a>
     <a href="setting.php">Setting</a>
-  </div>
+  </nav>
 
   <script>
-    function syncSettings() {
+    (function() {
       const savedFont = localStorage.getItem("nirvoyFont");
-      if (savedFont) {
-        document.body.style.fontFamily = savedFont;
-      }
       const savedTheme = localStorage.getItem("nirvoyTheme");
-      if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-      } else {
-        document.body.classList.remove('dark-mode');
-      }
-    }
-    syncSettings();
-    document.querySelector('.dot-btn').addEventListener('click', function() {
+      if (savedFont) document.body.style.fontFamily = savedFont;
+      if (savedTheme === 'dark') document.body.classList.add('dark-mode');
+    })();
+
+    document.querySelector('.dot-btn').addEventListener('click', function(e) {
+      e.stopPropagation();
       document.querySelector('.dropdown-content').classList.toggle('show');
     });
 
-    window.addEventListener('click', function(e) {
-      if (!e.target.matches('.dot-btn')) {
-        const dropdown = document.querySelector('.dropdown-content');
-        if (dropdown.classList.contains('show')) {
-          dropdown.classList.remove('show');
-        }
+    window.addEventListener('click', function() {
+      const dropdown = document.querySelector('.dropdown-content');
+      if (dropdown && dropdown.classList.contains('show')) {
+        dropdown.classList.remove('show');
       }
     });
   </script>

@@ -4,9 +4,7 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
   exit();
 }
 ?>
-
-
-
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,49 +12,75 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NIRVOY Dashboard</title>
   <style>
+    /* 1. Global Styles & Theme Variables */
+    :root {
+      --bg-color: #f0f4f8;
+      --card-bg: #ffffff;
+      --text-color: #333;
+      --primary-blue: #4285f4;
+    }
+
+    /* Dark Mode Support (Automatically inherits from Settings) */
+    body.dark-mode {
+      --bg-color: #121212;
+      --card-bg: #1e1e1e;
+      --text-color: #e0e0e0;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #f0f4f8;
+      background: var(--bg-color);
+      color: var(--text-color);
+      padding-bottom: 80px;
+      /* Space for bottom nav */
     }
 
+    /* 2. Header Icons Section */
     .top-icons {
       display: flex;
       justify-content: space-around;
       padding: 1rem;
-      background: white;
+      background: var(--card-bg);
       flex-wrap: wrap;
       position: relative;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     }
 
     .icon-block {
       text-align: center;
-      width: 80px;
+      width: 85px;
       margin: 0.5rem;
       cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .icon-block a {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .icon-block img {
-      width: 50px;
-      height: 50px;
-      object-fit: contain;
+      width: 55px;
+      height: 55px;
+      object-fit: cover;
+      border-radius: 12px;
       margin-bottom: 0.5rem;
+      transition: transform 0.2s ease;
+    }
+
+    .icon-block:hover img {
+      transform: scale(1.1);
     }
 
     .icon-block span {
-      display: block;
-      font-size: 0.9rem;
-      color: #333;
+      font-size: 0.85rem;
+      font-weight: 500;
     }
 
-    .icon-block:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-      border-radius: 10px;
-    }
-
-    /* Three-dot menu */
+    /* 3. Three-dot Menu */
     .three-dot-menu {
       position: absolute;
       top: 10px;
@@ -68,196 +92,102 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       border: none;
       font-size: 24px;
       cursor: pointer;
-      padding: 5px;
+      color: var(--text-color);
     }
 
     .dropdown-content {
       display: none;
       position: absolute;
       right: 0;
-      background: white;
-      min-width: 120px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      border-radius: 5px;
+      background: var(--card-bg);
+      min-width: 160px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border-radius: 8px;
       z-index: 1000;
+      overflow: hidden;
     }
 
     .dropdown-content a {
       display: block;
-      padding: 10px;
+      padding: 12px;
       text-decoration: none;
-      color: #333;
-    }
-
-    .dropdown-content a:hover {
-      background: #f0f0f0;
-    }
-
-    .show {
-      display: block;
-    }
-
-    .top-icons {
-      display: flex;
-      justify-content: space-around;
-      padding: 1rem;
-      background: white;
-      flex-wrap: wrap;
-      position: relative;
-    }
-
-    .icon-block {
-      text-align: center;
-      width: 80px;
-      margin: 0.5rem;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .icon-block img {
-      width: 50px;
-      height: 50px;
-      object-fit: contain;
-      margin-bottom: 0.5rem;
-    }
-
-    .icon-block span {
-      display: block;
+      color: var(--text-color);
       font-size: 0.9rem;
-      color: #333;
-    }
-
-    .icon-block:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-      border-radius: 10px;
-    }
-    .three-dot-menu {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-    }
-
-    .dot-btn {
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-      padding: 5px;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      right: 0;
-      background: white;
-      min-width: 120px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      border-radius: 5px;
-      z-index: 1000;
-    }
-
-    .dropdown-content a {
-      display: block;
-      padding: 10px;
-      text-decoration: none;
-      color: #333;
     }
 
     .dropdown-content a:hover {
-      background: #f0f0f0;
+      background: rgba(0, 0, 0, 0.05);
     }
 
     .show {
       display: block;
     }
 
+    /* 4. Banner Section */
     .banner {
       margin: 1rem;
-      background: #fff;
-      border-radius: 10px;
-      padding: 1rem;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
       text-align: center;
     }
-
-    .banner h2 {
-      margin: 0.5rem 0;
-      color: #222;
-    }
-
     .banner img {
-      width: 400px;
-      max-width: 90%;
-      height: auto;
+      width: 100%;
+      max-width: 500px;
       border-radius: 10px;
       margin: 1rem 0;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
 
-    .banner p {
-      margin: 0.3rem 0;
-      color: #555;
+    /* 5. Emergency Button */
+    .emergency-section {
+      text-align: center;
+      margin: 2rem 0;
     }
 
-    .emergency-button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 1.5rem 0;
-      flex-direction: column;
-    }
-
-    .emergency-button img {
-      width: 100px;
-      height: auto;
-      margin-bottom: 0.5rem;
-    }
-
-    .emergency-button button {
-      background: red;
+    .emergency-btn {
+      background: #ff3b30;
       color: white;
       border: none;
-      padding: 1rem 2rem;
+      padding: 15px 40px;
       border-radius: 50px;
-      font-size: 1rem;
-      cursor: pointer;
-      box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
-      transition: background 0.3s ease, transform 0.2s ease;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 4px 15px rgba(255, 59, 48, 0.3);
+      transition: 0.2s;
     }
 
-    .emergency-button button:hover {
-      background: darkred;
-      transform: scale(1.05);
+    .emergency-btn:hover {
+      background: #d32f2f;
+      transform: translateY(-2px);
     }
 
+    /* 6. Bottom Navigation */
     .bottom-nav {
       position: fixed;
       bottom: 0;
       width: 100%;
-      background: white;
+      background: var(--card-bg);
       display: flex;
       justify-content: space-around;
-      padding: 1rem 0;
-      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-      border-top: 1px solid #ddd;
+      padding: 12px 0;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     .bottom-nav a {
-      text-align: center;
-      font-size: 1rem;
-      color: #333;
+      color: var(--text-color);
       text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .bottom-nav a:hover {
-      color: #007bff;
+      font-size: 0.9rem;
+      opacity: 0.7;
     }
 
     .bottom-nav a.active {
-      color: #4a90e2;
+      color: var(--primary-blue);
       font-weight: bold;
+      opacity: 1;
     }
   </style>
 </head>
@@ -266,75 +196,79 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
   <div class="top-icons">
     <div class="icon-block">
       <a href="../assets/phobia.php">
-        <img src="../assets/image/phobia.jpeg" />
+        <img src="../assets/image/phobia.jpeg" alt="Phobia">
         <span>Phobia</span>
       </a>
     </div>
 
     <div class="icon-block">
       <a href="../assets/chatbot.php">
-        <img src="../assets/image/chat bot.webp" />
+        <img src="../assets/image/chat bot.webp" alt="Chatbot">
         <span>Chatbot</span>
       </a>
     </div>
 
     <div class="icon-block">
       <a href="../assets/Entertainment.php">
-        <img src="../assets/image/tools.jpg" /><br>
+        <img src="../assets/image/tools.jpg" alt="Entertainment">
         <span>Entertainment</span>
       </a>
     </div>
 
     <div class="icon-block">
       <a href="../assets/library.php">
-        <img src="../assets/image/library.png" />
+        <img src="../assets/image/library.png" alt="Library">
         <span>Library</span>
       </a>
     </div>
 
-
     <div class="three-dot-menu">
       <button class="dot-btn">⋮</button>
       <div class="dropdown-content">
-        <a href="profile.php">👤Profile</a>
-        <a href="../controllers/logout.php">🚪Logout</a>
-        <a href="appointment.php">📅Book your Appointment</a>
-        <a href="../assets/setting.php">⚙️Setting</a>
-        
+        <a href="profile.php">👤 Profile</a>
+        <a href="appointment.php">📅 Appointment</a>
+        <a href="../assets/setting.php">⚙️ Setting</a>
+        <a href="../controllers/logout.php" style="color: red;">🚪 Logout</a>
       </div>
     </div>
   </div>
 
   <div class="banner">
     <h2>Mental Health Awareness</h2>
-    <img src="../assets/image/mental health dashboard.png" />
-    <p>Sahyog The Helping Hand</p>
+    <img src="../assets/image/mental health dashboard.png" alt="Awareness">
+    <p><strong>Sahyog</strong> - The Helping Hand</p>
   </div>
 
-  <div class="emergency-button">
-    <button><a href="../assets/emergency.php">Emergency Button</a></button>
-
-
+  <div class="emergency-section">
+    <a href="../assets/emergency.php" class="emergency-btn">Emergency Help</a>
   </div>
 
-  <div class="bottom-nav">
+  <nav class="bottom-nav">
     <a href="dashboard.php" class="active">Dashboard</a>
     <a href="../assets/mood.php">Mood</a>
     <a href="../assets/consulting.php">Consulting</a>
     <a href="../assets/setting.php">Setting</a>
-  </div>
+  </nav>
 
   <script>
-    document.querySelector('.dot-btn').addEventListener('click', function () {
+    // --- Dark Mode Loader ---
+    (function() {
+      const savedTheme = localStorage.getItem("nirvoyTheme");
+      const savedFont = localStorage.getItem("nirvoyFont");
+      if (savedTheme === 'dark') document.body.classList.add('dark-mode');
+      if (savedFont) document.body.style.fontFamily = savedFont;
+    })();
+
+    // --- Dropdown Logic ---
+    document.querySelector('.dot-btn').addEventListener('click', function(e) {
+      e.stopPropagation();
       document.querySelector('.dropdown-content').classList.toggle('show');
     });
 
-    window.addEventListener('click', function (e) {
-      if (!e.target.matches('.dot-btn')) {
-        const dropdown = document.querySelector('.dropdown-content');
-        if (dropdown.classList.contains('show')) {
-          dropdown.classList.remove('show');
-        }
+    window.addEventListener('click', function() {
+      const dropdown = document.querySelector('.dropdown-content');
+      if (dropdown.classList.contains('show')) {
+        dropdown.classList.remove('show');
       }
     });
   </script>
