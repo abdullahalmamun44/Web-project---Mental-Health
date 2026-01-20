@@ -127,5 +127,26 @@ function updateUser($username, $updateData)
         return false;
     }
 }
-
+function deleteUser($username)
+{
+    $con = getConnection();
+    if (!$con) {
+        return false;
+    }
+    $username = mysqli_real_escape_string($con, $username);
+    $check_sql = "SELECT * FROM users WHERE username = '$username'";
+    $check_result = mysqli_query($con, $check_sql);
+    
+    if (mysqli_num_rows($check_result) == 0) {
+        return false;
+    }
+    
+    $sql = "DELETE FROM users WHERE username = '$username'";
+    
+    if (mysqli_query($con, $sql)) {
+        return mysqli_affected_rows($con) > 0;
+    } else {
+        return false;
+    }
+}
 ?>
