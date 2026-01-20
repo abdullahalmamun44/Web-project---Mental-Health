@@ -132,6 +132,7 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
       border-radius: 10px;
     }
+
     .three-dot-menu {
       position: absolute;
       top: 10px;
@@ -296,11 +297,11 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     <div class="three-dot-menu">
       <button class="dot-btn">⋮</button>
       <div class="dropdown-content">
-        <a href="profile.php">👤Profile</a>
-        <a href="../controllers/logout.php">🚪Logout</a>
-        <a href="appointment.php">📅Book your Appointment</a>
-        <a href="../assets/setting.php">⚙️Setting</a>
-        
+        <a href="profile.php">Profile</a>
+        <a href="../controllers/logout.php">Logout</a>
+        <a href="appointment.php">Book your Appointment</a>
+        <a href="../assets/setting.php">Setting</a>
+
       </div>
     </div>
   </div>
@@ -316,6 +317,8 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
 
 
   </div>
+
+
 
   <div class="bottom-nav">
     <a href="dashboard.php" class="active">Dashboard</a>
