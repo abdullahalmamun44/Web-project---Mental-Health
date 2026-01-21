@@ -1,5 +1,5 @@
 <?php
-// Secure session check
+
 if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
   header('location: ../views/userlogin.php');
   exit();
@@ -13,7 +13,7 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nirvoy – Display & Font</title>
   <style>
-    /* 1. Global Reset & Base Styles */
+  
     * {
       box-sizing: border-box;
       margin: 0;
@@ -30,7 +30,6 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       transition: background 0.3s, color 0.3s;
     }
 
-    /* 2. Dark Mode Overrides */
     body.dark-mode {
       background: #121212;
       color: #e0e0e0;
@@ -60,7 +59,6 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       color: #888;
     }
 
-    /* 3. Top Navigation Bar */
     .top-bar {
       background: #4285f4;
       color: #fff;
@@ -85,7 +83,6 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       color: white;
     }
 
-    /* 4. Dropdown Menu */
     .dropdown-content {
       display: none;
       position: absolute;
@@ -115,7 +112,6 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       display: block !important;
     }
 
-    /* 5. Main Content Layout */
     .page-wrapper {
       flex: 1;
       padding: 20px;
@@ -169,7 +165,6 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       color: #777;
     }
 
-    /* 6. Bottom Navigation */
     .bottom-nav {
       position: fixed;
       bottom: 0;
@@ -253,7 +248,6 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     const menuBtn = document.getElementById("menuBtn");
     const dropdownMenu = document.getElementById("dropdownMenu");
 
-    // --- FONT LOGIC ---
     function updateAppFont(fontName) {
       document.body.style.fontFamily = fontName;
       if (previewBox) previewBox.style.fontFamily = fontName;
@@ -291,7 +285,6 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       localStorage.setItem("nirvoyTheme", selectedTheme);
     });
 
-    // --- DROPDOWN LOGIC ---
     menuBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       dropdownMenu.classList.toggle('show');

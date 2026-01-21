@@ -19,7 +19,6 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       background: #f0f4f8;
     }
 
-    /* Dark Mode Overrides */
     body.dark-mode {
       background: #121212;
       color: #e0e0e0;
