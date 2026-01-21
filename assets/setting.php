@@ -12,48 +12,28 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nirvoy - Mental Health App</title>
   <style>
-    /* We keep your base styles, but the loader will override the font-family */
     body {
       font-family: "Segoe UI", sans-serif;
       margin: 0;
       padding: 0;
       background-color: #f4f8fb;
       color: #333;
+      padding-bottom: 70px;
     }
 
-    /* Dark Mode Overrides */
     body.dark-mode {
       background: #121212;
       color: #e0e0e0;
     }
 
-    body.dark-mode .card,
-    body.dark-mode .bottom-nav,
     body.dark-mode .dropdown-content {
       background: #1e1e1e;
       border-color: #333;
       color: #fff;
     }
 
-    body.dark-mode .preview-box {
-      background: #252525;
-      border-color: #444;
-      color: #fff;
-    }
-
-    body.dark-mode .bottom-nav a,
-    body.dark-mode .dropdown-content a,
-    body.dark-mode .row label {
-      color: #bbb;
-    }
-
-    body.dark-mode .small-note {
-      color: #888;
-    }
-
-    body.dark-mode .top-bar {
-      background: #1a73e8;
-      /* Slightly darker blue for dark mode header */
+    body.dark-mode .bottom-nav {
+      background-color: #222;
     }
 
     header {
@@ -83,7 +63,7 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       position: absolute;
       right: 0;
       background: white;
-      min-width: 140px;
+      min-width: 160px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       border-radius: 5px;
       z-index: 1000;
@@ -91,9 +71,10 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
 
     .dropdown-content a {
       display: block;
-      padding: 10px;
+      padding: 12px;
       text-decoration: none;
       color: #333;
+      text-align: left;
     }
 
     .dropdown-content a:hover {
@@ -101,30 +82,19 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     }
 
     .show {
-      display: block;
-    }
-
-    .language-select {
-      margin-top: 0.5rem;
-    }
-
-    button,
-    select {
-      margin: 0.5rem;
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-    }
-
-    .intro {
-      text-align: center;
-      margin: 2rem 0;
+      display: block !important;
     }
 
     .menu {
       display: flex;
       justify-content: center;
       gap: 1rem;
-      margin-bottom: 2rem;
+      margin-top: 2rem;
+    }
+
+    .menu button {
+      padding: 10px 15px;
+      cursor: pointer;
     }
 
     .bottom-nav {
@@ -134,39 +104,38 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       background-color: #e0e0e0;
       display: flex;
       justify-content: space-around;
-      padding: 0.5rem 0;
+      padding: 1rem 0;
+      border-top: 1px solid #ccc;
     }
 
-    .nav-btn {
-      background: none;
-      border: none;
-      font-size: 1.2rem;
+    .bottom-nav a {
+      text-decoration: none;
+      color: inherit;
+      font-weight: bold;
     }
 
-    .page {
-      display: none;
-      padding: 1rem;
-    }
-
-    .page.active {
-      display: block;
+    .bottom-nav a.active {
+      color: #4a90e2;
     }
   </style>
-</head>
 
-<body>
   <script>
     (function () {
       const savedFont = localStorage.getItem("nirvoyFont");
+      const savedTheme = localStorage.getItem("nirvoyTheme");
       if (savedFont) {
-        document.documentElement.style.setProperty('font-family', savedFont, 'important');
+        document.documentElement.style.setProperty('font-family', savedFont);
         document.write(`<style>body, button, select, input, textarea { font-family: ${savedFont} !important; }</style>`);
       }
-    }
-    )();
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+      }
+    })();
   </script>
-  <header>
+</head>
 
+<body>
+  <header>
     <h1>Nirvoy</h1>
     <div class="language-select">
       <label for="language">Select Language:</label>
@@ -188,35 +157,32 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
   </header>
 
   <main>
-    <section id="home" class="page active">
+    <section id="home" class="page">
       <div class="intro">
-        <h2>CARE FOR YOUR MENTAL HEALTH</h2>
+        <h2 style="text-align: center;">CARE FOR YOUR MENTAL HEALTH</h2>
       </div>
       <nav class="menu">
-        <button><a href="display_font.php" style="text-decoration:none; color:inherit;">Display & Font</a></button>
-        <button><a href="about.php" style="text-decoration:none; color:inherit;">About</a></button>
-        <button><a href="software_update.php" style="text-decoration:none; color:inherit;">Software update</a></button>
+        <button onclick="location.href='display_font.php'">Display & Font</button>
+        <button onclick="location.href='about.php'">About</button>
+        <button onclick="location.href='software_update.php'">Software Update</button>
       </nav>
-    </section>
-
-    <section id="setting" class="page">
-      <h2>Settings</h2>
-      <p>Here you can customize your app preferences:</p>
-      <ul>
-        <li>Change Language</li>
-        <li>Toggle Voice Assistance</li>
-        <li>Update Software</li>
-        <li>About Nirvoy</li>
-      </ul>
     </section>
   </main>
 
+  <div class="bottom-nav">
+    <a href="../views/dashboard.php">Dashboard</a>
+    <a href="mood.php">Mood</a>
+    <a href="consulting.php">Consulting</a>
+    <a href="setting.php" class="active">Setting</a>
+  </div>
+
   <script>
-    // Voice Toggle Logic
-    document.getElementById("voiceToggle").addEventListener("click", function () {
+    document.getElementById("voiceToggle").addEventListener("click", function() {
       const current = this.textContent.includes("Off");
       this.textContent = `Voice: ${current ? "On" : "Off"}`;
     });
+    const dotBtn = document.querySelector('.dot-btn');
+    const dropdown = document.querySelector('.dropdown-content');
 
     // Dropdown Logic
     document.querySelector('.dot-btn').addEventListener('click', function () {
@@ -236,27 +202,15 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     document.getElementById("language").addEventListener("change", function () {
       alert(`Language changed to ${this.options[this.selectedIndex].text}`);
     });
-  </script>
-  function syncSettings() {
-  const savedFont = localStorage.getItem("nirvoyFont");
-  if (savedFont) {
-  document.body.style.fontFamily = savedFont;
-  }
-  const savedTheme = localStorage.getItem("nirvoyTheme");
-  if (savedTheme === 'dark') {
-  document.body.classList.add('dark-mode');
-  } else {
-  document.body.classList.remove('dark-mode');
-  }
-  }
-  syncSettings();
 
-  <div class="bottom-nav">
-    <a href="../views/dashboard.php"> Dashboard</a>
-    <a href="mood.php"> Mood</a>
-    <a href="consulting.php"> Consulting</a>
-    <a href="setting.php" class="active"> Setting</a>
-  </div>
+    function syncSettings() {
+      const savedTheme = localStorage.getItem("nirvoyTheme");
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+    }
+    syncSettings();
+  </script>
 </body>
 
 </html>
