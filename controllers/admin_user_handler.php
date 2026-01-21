@@ -4,7 +4,6 @@ session_start();
 
 $con = getConnection();
 
-// Only allow admin role
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../views/userlogin.php");
     exit();
@@ -16,7 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     $password = trim($_POST['password'] ?? '');
 
     if ($act === 'add' && $username && $password) {
-        // Prevent duplicate usernames
         $check = mysqli_prepare($con, "SELECT id FROM users WHERE username=?");
         mysqli_stmt_bind_param($check, "s", $username);
         mysqli_stmt_execute($check);

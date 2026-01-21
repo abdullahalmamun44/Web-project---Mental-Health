@@ -1,11 +1,9 @@
 <?php
 session_start();
 
-// --- Fixed admin credentials ---
 const ADMIN_USERNAME = 'admin';
 const ADMIN_PASSWORD = '123';
 
-// --- DB connection function ---
 $host = "127.0.0.1";
 $dbname = "webtech";
 $dbuser = "root";
@@ -21,7 +19,6 @@ function getConnection()
     return $con;
 }
 
-// --- Login handler ---
 if (isset($_POST['login'])) {
     $u = $_POST['username'] ?? '';
     $p = $_POST['password'] ?? '';
@@ -34,14 +31,12 @@ if (isset($_POST['login'])) {
     }
 }
 
-// --- Logout handler ---
 if (isset($_GET['logout'])) {
     setcookie('status', '', time() - 3600, '/');
     header('Location: ' . $_SERVER['PHP_SELF']);
     exit;
 }
 
-// --- Protect dashboard ---
 if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     ?>
     <!DOCTYPE html>
@@ -68,7 +63,6 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     exit;
 }
 
-// --- Handle user actions ---
 $con = getConnection();
 
 if (isset($_POST['action'])) {
@@ -90,7 +84,6 @@ if (isset($_POST['action'])) {
     }
 }
 
-// --- Fetch current users ---
 
 mysqli_close($con);
 ?>

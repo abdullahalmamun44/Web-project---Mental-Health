@@ -208,8 +208,8 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       <button class="dot-btn">⋮</button>
       <div class="dropdown-content">
         
-        <a href="profile.php">👤Profile</a>
-        <a href="appointment.php">📅Book your Appointment</a>
+        <a href="../views/profile.php">👤Profile</a>
+        <a href="../views/appointment.php">📅Book your Appointment</a>
        <a href="../controllers/logout.php">🚪Logout</a>
       </div>
     </div>
