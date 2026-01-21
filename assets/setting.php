@@ -120,7 +120,7 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
   </style>
 
   <script>
-    (function() {
+    (function () {
       const savedFont = localStorage.getItem("nirvoyFont");
       const savedTheme = localStorage.getItem("nirvoyTheme");
       if (savedFont) {
@@ -149,9 +149,9 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     <div class="three-dot-menu">
       <button class="dot-btn">⋮</button>
       <div class="dropdown-content">
-        <a href="profile.php">👤 Profile</a>
-        <a href="appointment.php">📅 Book Appointment</a>
-        <a href="../controllers/logout.php">🚪 Logout</a>
+        <a href="profile.php">Profile</a>
+        <a href="appointment.php">Book your Appointment</a>
+        <a href="../controllers/logout.php">Logout</a>
       </div>
     </div>
   </header>
@@ -184,18 +184,22 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     const dotBtn = document.querySelector('.dot-btn');
     const dropdown = document.querySelector('.dropdown-content');
 
-    dotBtn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      dropdown.classList.toggle('show');
+    // Dropdown Logic
+    document.querySelector('.dot-btn').addEventListener('click', function () {
+      document.querySelector('.dropdown-content').classList.toggle('show');
     });
 
-    window.addEventListener('click', function() {
-      if (dropdown.classList.contains('show')) {
-        dropdown.classList.remove('show');
+    window.addEventListener('click', function (e) {
+      if (!e.target.matches('.dot-btn')) {
+        const dropdown = document.querySelector('.dropdown-content');
+        if (dropdown && dropdown.classList.contains('show')) {
+          dropdown.classList.remove('show');
+        }
       }
     });
 
-    document.getElementById("language").addEventListener("change", function() {
+    // Language Alert
+    document.getElementById("language").addEventListener("change", function () {
       alert(`Language changed to ${this.options[this.selectedIndex].text}`);
     });
 

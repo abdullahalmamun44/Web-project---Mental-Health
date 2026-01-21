@@ -80,7 +80,6 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
       font-weight: 500;
     }
 
-    /* 3. Three-dot Menu */
     .three-dot-menu {
       position: absolute;
       top: 10px;
@@ -225,10 +224,11 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     <div class="three-dot-menu">
       <button class="dot-btn">⋮</button>
       <div class="dropdown-content">
-        <a href="profile.php">👤 Profile</a>
-        <a href="appointment.php">📅 Appointment</a>
-        <a href="../assets/setting.php">⚙️ Setting</a>
-        <a href="../controllers/logout.php" style="color: red;">🚪 Logout</a>
+        <a href="profile.php">Profile</a>
+        <a href="../controllers/logout.php">Logout</a>
+        <a href="appointment.php">Book your Appointment</a>
+        <a href="../assets/setting.php">Setting</a>
+
       </div>
     </div>
   </div>
@@ -243,7 +243,9 @@ if (!isset($_COOKIE['status']) || $_COOKIE['status'] !== 'true') {
     <a href="../assets/emergency.php" class="emergency-btn">Emergency Help</a>
   </div>
 
-  <nav class="bottom-nav">
+
+
+  <div class="bottom-nav">
     <a href="dashboard.php" class="active">Dashboard</a>
     <a href="../assets/mood.php">Mood</a>
     <a href="../assets/consulting.php">Consulting</a>
